@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { customerName, customerPhone, orderType, tableNumber, notes, items, total } = body;
+    const { customerName, customerPhone, orderType, tableNumber, notes, items, total, paymentMethod } = body;
     if (!customerName || !customerPhone || !Array.isArray(items) || !items.length || !total) {
       return NextResponse.json({ error: "Missing required order details" }, { status: 400 });
     }
@@ -35,8 +35,8 @@ export async function POST(request: NextRequest) {
       notes: notes || null,
       items,
       total: Number(total),
-      payment_status: "pending",
-      payment_method: null,
+      payment_status: paymentMethod === "cash" ? "unpaid" : "pending",
+      payment_method: paymentMethod === "cash" ? "cash" : "online",
       order_status: "new",
     };
 
