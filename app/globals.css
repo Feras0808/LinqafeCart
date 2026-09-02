@@ -1006,3 +1006,281 @@ button:focus-visible{
 
 
 .payment-method-section{margin:18px 0}.payment-method-title{font-weight:700;margin:0 0 10px}.payment-option{display:flex;align-items:center;gap:10px;width:100%;padding:13px 14px;margin-bottom:8px;border:1px solid rgba(0,0,0,.12);border-radius:12px;cursor:pointer;transition:.2s ease}.payment-option input{width:18px!important;height:18px!important;min-width:18px!important;flex:0 0 18px!important;margin:0!important;padding:0!important;accent-color:#bd9872}.payment-option.selected{border-color:#bd9872;background:rgba(189,152,114,.08)}
+/* =========================================================
+   ADMIN ORDER + PAYMENT STATUS BADGES
+   ========================================================= */
+
+.order-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.order-statuses {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-title {
+  color: #4a3538;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-divider {
+  color: #d9c8c3;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.order-status-badge,
+.payment-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  min-height: 29px;
+
+  padding: 5px 10px;
+
+  border-radius: 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  border: 1px solid currentColor;
+}
+
+.status-icon {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   ORDER STATUS COLORS
+   ========================================================= */
+
+.status-new {
+  color: #d99316;
+  background: #fff9e9;
+}
+
+.status-confirmed {
+  color: #3679bd;
+  background: #eef6ff;
+}
+
+.status-preparing {
+  color: #d66b22;
+  background: #fff3e8;
+}
+
+.status-ready {
+  color: #8062b8;
+  background: #f5f0ff;
+}
+
+.status-completed {
+  color: #39864e;
+  background: #eef9f0;
+}
+
+.status-cancelled {
+  color: #c44444;
+  background: #fff0f0;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS COLORS
+   ========================================================= */
+
+.payment-status-badge.paid {
+  color: #39864e;
+  background: #eef9f0;
+}
+
+.payment-status-badge.unpaid {
+  color: #c05b32;
+  background: #fff3ed;
+}
+
+.payment-status-badge.pending {
+  color: #d27a20;
+  background: #fff8ed;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.order-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.order-controls select {
+  height: 32px;
+  min-width: 105px;
+
+  padding: 5px 9px;
+
+  border: 1px solid #dfc9c0;
+  border-radius: 7px;
+
+  background: #fff;
+  color: #3b2428;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.order-controls button {
+  height: 32px;
+
+  padding: 0 13px;
+
+  border: 0;
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.cash-paid-btn {
+  background: #39864e !important;
+  color: #fff !important;
+}
+
+.cash-paid-btn:hover {
+  background: #2f713f !important;
+}
+
+.print-btn {
+  background: #5d1d2a !important;
+  color: #fff !important;
+}
+
+.print-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.admin-error {
+  margin-bottom: 18px;
+
+  padding: 11px 14px;
+
+  border: 1px solid #e7b7b7;
+  border-radius: 10px;
+
+  background: #fff0f0;
+  color: #a33b3b;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.admin-loading {
+  padding: 60px 0;
+
+  text-align: center;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .order-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .order-statuses {
+    width: 100%;
+  }
+
+  .order-controls {
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .order-statuses {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .status-divider {
+    display: none;
+  }
+
+  .status-group {
+    flex-wrap: wrap;
+  }
+
+  .order-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .order-controls select,
+  .order-controls button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  .order-status-badge,
+  .payment-status-badge {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
