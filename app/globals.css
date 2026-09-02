@@ -1,0 +1,1005 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
+:root{
+  --maroon:#541d27;
+  --maroon2:#6c2631;
+  --cream:#fff7f0;
+  --paper:#fffaf5;
+  --ink:#3b2428;
+  --muted:#76696a;
+  --line:#e6c9bc;
+  --gold:#c99b84;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  background:var(--maroon);
+  color:var(--ink);
+  font-family:'DM Sans',Arial,sans-serif;
+}
+
+button{
+  font:inherit;
+}
+
+button:focus-visible{
+  outline:3px solid #d5a797;
+  outline-offset:3px;
+}
+
+
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
+
+.landing{
+  min-height:100svh;
+  background:var(--maroon);
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  overflow:hidden;
+}
+
+.landing-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      #7a313d55,
+      transparent 45%
+    );
+
+  pointer-events:none;
+}
+
+.landing-content{
+  position:relative;
+  z-index:1;
+
+  width:min(100%,560px);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:18px;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.brand-pill{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:2px;
+
+  color:#e6c7b9;
+}
+
+.brand-pill img{
+  width:min(270px,68vw);
+  height:auto;
+
+  object-fit:contain;
+}
+
+.brand-pill span{
+  font-size:11px;
+  letter-spacing:5px;
+  font-weight:700;
+  opacity:.9;
+}
+
+
+/* =========================================================
+   HERO CARD
+   ========================================================= */
+
+.hero-card{
+  width:100%;
+
+  /*
+    Keeps the card approximately the same size
+    while allowing the video to breathe.
+  */
+  height:min(68svh,660px);
+  min-height:500px;
+
+  position:relative;
+
+  border:1px solid #e8cfc4;
+
+  padding:6px;
+
+  background:#6a2933;
+
+  box-shadow:0 22px 70px #0005;
+
+  overflow:hidden;
+}
+
+
+/*
+  Inner decorative border.
+*/
+.hero-card:before{
+  content:"";
+
+  position:absolute;
+
+  inset:12px;
+
+  border:1px solid #ead4ca;
+
+  z-index:2;
+
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   HERO VIDEO
+   ========================================================= */
+
+.hero-image{
+  position:absolute;
+
+  /*
+    IMPORTANT:
+    This makes the video stay inside the card.
+  */
+  inset:6px;
+
+  width:calc(100% - 12px);
+  height:calc(100% - 12px);
+
+  /*
+    CHANGED FROM cover TO contain.
+
+    This prevents the video from being heavily zoomed
+    and cropped.
+  */
+  object-fit:contain;
+
+  object-position:center;
+
+  background:#000;
+
+  z-index:0;
+
+  display:block;
+}
+
+
+/* =========================================================
+   HERO SHADE
+   ========================================================= */
+
+.hero-shade{
+  position:absolute;
+
+  inset:0;
+
+  z-index:1;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      to top,
+      #2e1118df 0%,
+      #2e111855 38%,
+      transparent 72%
+    );
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.hero-copy{
+  position:absolute;
+
+  z-index:3;
+
+  left:24px;
+  right:24px;
+  bottom:30px;
+
+  text-align:center;
+
+  color:white;
+}
+
+.hero-copy p{
+  font-size:12px;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+  margin:0 0 10px;
+
+  color:#f0d8ce;
+}
+
+.hero-copy h1{
+  font-family:'Playfair Display',serif;
+
+  font-size:36px;
+
+  margin:0 0 18px;
+
+  font-weight:600;
+}
+
+
+/* =========================================================
+   LANGUAGE BUTTONS
+   ========================================================= */
+
+.language-buttons{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:10px;
+}
+
+.language-btn{
+  border:1px solid #f0d7cd;
+
+  background:#fff8f3;
+
+  color:var(--maroon);
+
+  border-radius:10px;
+
+  padding:14px 10px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.language-btn.primary{
+  background:var(--maroon2);
+
+  color:white;
+
+  border-color:#d9a99b;
+}
+
+.language-btn:hover{
+  transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   LANDING FOOTER
+   ========================================================= */
+
+.landing-footer{
+  color:#dfc0b5;
+
+  margin:0;
+
+  font-family:'Playfair Display',serif;
+
+  font-size:17px;
+}
+
+
+/* =========================================================
+   MENU PAGE
+   ========================================================= */
+
+.menu-page{
+  min-height:100svh;
+
+  background:
+    linear-gradient(
+      #fffaf7,
+      #fff7f0
+    );
+
+  padding-bottom:30px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.menu-header{
+  background:var(--maroon);
+
+  color:#e6c7b9;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:20;
+
+  box-shadow:
+    0 4px 18px #35101822;
+}
+
+.header-inner{
+  width:min(100% - 28px,900px);
+
+  margin:auto;
+
+  min-height:82px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+}
+
+.header-inner img{
+  width:170px;
+
+  height:auto;
+}
+
+.header-right{
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+}
+
+.header-right>span{
+  font-size:10px;
+
+  letter-spacing:3px;
+
+  font-weight:700;
+}
+
+.change-language{
+  border:1px solid #d9a99b55;
+
+  background:transparent;
+
+  color:#f3ded6;
+
+  border-radius:999px;
+
+  padding:8px 12px;
+
+  font-size:11px;
+
+  cursor:pointer;
+}
+
+
+/* =========================================================
+   MENU INTRO
+   ========================================================= */
+
+.menu-intro{
+  text-align:center;
+
+  padding:34px 18px 18px;
+}
+
+.intro-line{
+  height:1px;
+
+  width:130px;
+
+  background:var(--line);
+
+  margin:0 auto 13px;
+
+  position:relative;
+}
+
+.intro-line:after{
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+  top:-4px;
+
+  width:8px;
+  height:8px;
+
+  background:#c98f7c;
+
+  border-radius:50%;
+
+  transform:translateX(-50%);
+}
+
+.menu-intro h1{
+  font-family:'Playfair Display',serif;
+
+  text-transform:uppercase;
+
+  letter-spacing:4px;
+
+  font-size:35px;
+
+  color:var(--maroon);
+
+  margin:0;
+}
+
+.rtl .menu-intro h1{
+  letter-spacing:0;
+
+  text-transform:none;
+
+  font-family:'Noto Naskh Arabic',serif;
+
+  font-size:38px;
+}
+
+.menu-intro p{
+  margin:6px 0 0;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+}
+
+.rtl .menu-intro p{
+  letter-spacing:0;
+
+  font-family:'Noto Naskh Arabic',serif;
+
+  font-size:14px;
+}
+
+
+/* =========================================================
+   CATEGORY NAVIGATION
+   ========================================================= */
+
+.category-scroll{
+  width:min(100% - 22px,900px);
+
+  margin:0 auto 18px;
+
+  display:flex;
+
+  gap:8px;
+
+  overflow-x:auto;
+
+  padding:4px 2px 10px;
+
+  scrollbar-width:none;
+}
+
+.category-scroll::-webkit-scrollbar{
+  display:none;
+}
+
+.category-btn{
+  flex:0 0 auto;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  border:1px solid #e4cbc0;
+
+  background:#fffdfa;
+
+  color:#624c4e;
+
+  border-radius:999px;
+
+  padding:10px 13px;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  box-shadow:
+    0 2px 8px #5a1d2710;
+}
+
+.category-btn span{
+  font-size:16px;
+}
+
+.category-btn b{
+  font-size:12px;
+
+  font-weight:600;
+}
+
+.category-btn.active{
+  background:var(--maroon);
+
+  border-color:var(--maroon);
+
+  color:white;
+}
+
+
+/* =========================================================
+   ITEMS
+   ========================================================= */
+
+.items-section{
+  width:min(100% - 22px,900px);
+
+  margin:auto;
+}
+
+.items-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:14px;
+}
+
+.item-card{
+  background:white;
+
+  border:1px solid #eadbd4;
+
+  border-radius:16px;
+
+  overflow:hidden;
+
+  box-shadow:
+    0 7px 22px #5a1d2710;
+}
+
+.item-image-wrap{
+  position:relative;
+
+  aspect-ratio:1/1;
+
+  overflow:hidden;
+
+  background:#eee4df;
+}
+
+.item-image{
+  object-fit:cover;
+}
+
+.image-placeholder{
+  height:100%;
+
+  display:grid;
+
+  place-items:center;
+
+  font-size:54px;
+
+  background:#f3e8e1;
+}
+
+.item-body{
+  padding:13px 13px 16px;
+}
+
+.item-top{
+  display:flex;
+
+  align-items:flex-start;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.item-top h2{
+  font-family:'Playfair Display',serif;
+
+  font-size:18px;
+
+  line-height:1.12;
+
+  color:var(--maroon);
+
+  margin:0;
+
+  flex:1;
+}
+
+.rtl .item-top h2{
+  font-family:'Noto Naskh Arabic',serif;
+
+  font-size:20px;
+}
+
+.price{
+  white-space:nowrap;
+
+  font-family:'Playfair Display',serif;
+
+  font-size:20px;
+
+  font-weight:700;
+
+  color:var(--maroon);
+}
+
+.price small{
+  font-family:'DM Sans',sans-serif;
+
+  font-size:9px;
+
+  letter-spacing:.5px;
+}
+
+.rtl .price{
+  font-family:'DM Sans',sans-serif;
+}
+
+.item-body p{
+  font-size:11px;
+
+  line-height:1.55;
+
+  color:#75696a;
+
+  margin:8px 0 0;
+}
+
+.rtl .item-body p{
+  font-family:'Noto Naskh Arabic',serif;
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   COMING SOON
+   ========================================================= */
+
+.coming-soon{
+  min-height:280px;
+
+  border:1px dashed #dfc7bc;
+
+  border-radius:18px;
+
+  display:grid;
+
+  place-items:center;
+
+  text-align:center;
+
+  padding:30px;
+
+  background:#fffdfa;
+}
+
+.coming-soon span{
+  font-size:40px;
+}
+
+.coming-soon h2{
+  font-family:'Playfair Display',serif;
+
+  color:var(--maroon);
+
+  margin:5px 0 0;
+}
+
+.coming-soon p{
+  color:var(--muted);
+
+  font-size:13px;
+
+  margin:0;
+}
+
+.rtl .coming-soon h2,
+.rtl .coming-soon p{
+  font-family:'Noto Naskh Arabic',serif;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.menu-footer{
+  text-align:center;
+
+  color:#9b7d78;
+
+  font-size:11px;
+
+  letter-spacing:2px;
+
+  padding:35px 12px 10px;
+}
+
+.rtl .menu-footer{
+  font-family:'Noto Naskh Arabic',serif;
+
+  letter-spacing:0;
+
+  font-size:13px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:520px){
+
+  .landing{
+    padding:12px;
+  }
+
+  .landing-content{
+    gap:14px;
+  }
+
+  .brand-pill img{
+    width:min(240px,65vw);
+  }
+
+  .brand-pill span{
+    font-size:10px;
+
+    letter-spacing:4px;
+  }
+
+  /*
+    Mobile hero card.
+  */
+  .hero-card{
+    min-height:510px;
+
+    height:69svh;
+
+    padding:5px;
+
+    border-radius:0;
+  }
+
+  .hero-card:before{
+    inset:10px;
+  }
+
+  /*
+    Keep the entire video visible.
+  */
+  .hero-image{
+    inset:5px;
+
+    width:calc(100% - 10px);
+
+    height:calc(100% - 10px);
+
+    object-fit:contain;
+
+    object-position:center;
+  }
+
+  .hero-copy{
+    left:18px;
+
+    right:18px;
+
+    bottom:24px;
+  }
+
+  .hero-copy p{
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-bottom:7px;
+  }
+
+  .hero-copy h1{
+    font-size:31px;
+
+    margin-bottom:16px;
+  }
+
+  .language-btn{
+    padding:13px 8px;
+
+    font-size:13px;
+  }
+
+  .items-grid{
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+  }
+
+  .item-body{
+    padding:11px;
+  }
+
+  .item-top h2{
+    font-size:16px;
+  }
+
+  .rtl .item-top h2{
+    font-size:18px;
+  }
+
+  .item-body p{
+    font-size:10px;
+  }
+
+  .rtl .item-body p{
+    font-size:12px;
+  }
+
+  .price{
+    font-size:18px;
+  }
+
+  .header-right>span{
+    display:none;
+  }
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+   ========================================================= */
+
+@media(min-width:760px){
+
+  .hero-card{
+    height:600px;
+  }
+
+  .items-grid{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+  .category-scroll{
+    justify-content:center;
+  }
+
+  .menu-intro{
+    padding-top:42px;
+  }
+}
+.brand-pill {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header-logo-button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-button img {
+  display: block;
+}
+.hero-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 10px;
+}
+
+.menu-footer {
+  text-align: center;
+  color: #9b7d78;
+  padding: 35px 12px 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.menu-footer strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--maroon);
+}
+
+.menu-footer span {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.rtl .menu-footer {
+  font-family: 'Noto Naskh Arabic', serif;
+  letter-spacing: 0;
+}
+
+.rtl .menu-footer span {
+  font-family: 'Noto Naskh Arabic', serif;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+/* =========================================================
+   MENU CARD HOVER ANIMATION ONLY
+   ========================================================= */
+
+.item-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.item-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px #5a1d2725;
+}
+
+.item-image {
+  transition: transform 0.4s ease;
+}
+
+.item-card:hover .item-image {
+  transform: scale(1.05);
+}
+/* =========================================================
+   CART / CHECKOUT
+   ========================================================= */
+.cart-floating{position:fixed;right:18px;bottom:18px;z-index:40;border:0;background:var(--maroon);color:white;border-radius:999px;padding:13px 18px;box-shadow:0 10px 30px #35101835;cursor:pointer;font-weight:700}.cart-count{display:inline-flex;min-width:22px;height:22px;align-items:center;justify-content:center;border-radius:50%;background:#e8b29f;margin-inline-start:8px;font-size:11px}.cart-overlay{position:fixed;inset:0;background:#1f0d1090;z-index:50;display:flex;justify-content:flex-end}.cart-panel{width:min(100%,480px);height:100%;background:var(--paper);overflow:auto;padding:22px;box-shadow:-10px 0 40px #0003}.cart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.cart-head h2{font-family:'Playfair Display',serif;color:var(--maroon);margin:0}.cart-close{border:0;background:#f1e3dc;color:var(--maroon);border-radius:50%;width:38px;height:38px;cursor:pointer}.cart-item{display:grid;grid-template-columns:82px 1fr auto;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}.cart-item img{width:82px;height:82px;object-fit:cover;border-radius:12px}.cart-item h3{margin:0;color:var(--maroon);font-size:16px}.cart-item p{margin:4px 0;color:var(--muted);font-size:12px}.qty{display:flex;align-items:center;gap:8px;margin-top:8px}.qty button{border:1px solid var(--line);background:white;border-radius:8px;width:28px;height:28px;cursor:pointer}.cart-item-total{font-weight:700;color:var(--maroon);white-space:nowrap}.cart-summary{padding-top:18px}.cart-total{display:flex;justify-content:space-between;font-size:20px;font-weight:700;color:var(--maroon);margin-bottom:16px}.checkout-btn,.pay-btn{width:100%;border:0;background:var(--maroon);color:white;border-radius:12px;padding:15px;font-weight:700;cursor:pointer}.checkout-form{display:grid;gap:10px}.checkout-form input,.checkout-form select,.checkout-form textarea,.admin-login input{width:100%;border:1px solid #dfc9c0;border-radius:10px;padding:12px;background:white;font:inherit}.checkout-form textarea{min-height:80px;resize:vertical}.checkout-back{border:0;background:none;color:var(--maroon);padding:0 0 12px;cursor:pointer;text-align:start}.empty-cart{text-align:center;padding:70px 10px;color:var(--muted)}.cart-note{font-size:11px;color:var(--muted);margin-top:10px}.add-cart{width:100%;margin-top:12px;border:1px solid var(--maroon);background:var(--maroon);color:white;border-radius:9px;padding:10px;font-weight:700;cursor:pointer;transition:.2s}.add-cart:hover{transform:translateY(-1px);opacity:.92}.rtl .cart-panel{text-align:right}.rtl .checkout-back{text-align:right}
+
+/* =========================================================
+   ADMIN
+   ========================================================= */
+.admin-page{min-height:100svh;background:#f7f1ed;color:#3b2428;font-family:'DM Sans',Arial,sans-serif}.admin-shell{width:min(1100px,calc(100% - 28px));margin:auto;padding:30px 0}.admin-login{width:min(420px,calc(100% - 28px));margin:12vh auto;background:white;border:1px solid #eadbd4;border-radius:18px;padding:28px;box-shadow:0 15px 50px #541d2714;display:grid;gap:12px}.admin-login h1{font-family:'Playfair Display',serif;color:var(--maroon);margin:0}.admin-login p{color:var(--muted);margin:0 0 8px}.admin-login button,.admin-head button,.order-bottom button{border:0;background:var(--maroon);color:#fff;border-radius:9px;padding:11px 15px;cursor:pointer}.admin-login span{color:#b23a3a;font-size:13px}.admin-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.admin-head h1{font-family:'Playfair Display',serif;color:var(--maroon);margin:0}.admin-head p{color:var(--muted);margin:4px 0 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}.stats>div{background:white;border:1px solid #eadbd4;border-radius:14px;padding:18px}.stats span{display:block;color:var(--muted);font-size:12px}.stats strong{display:block;color:var(--maroon);font-size:23px;margin-top:5px}.orders-list h2{font-family:'Playfair Display',serif;color:var(--maroon)}.order-card{background:white;border:1px solid #eadbd4;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px #541d2710}.order-top,.order-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.order-top>div{display:grid;gap:3px}.order-top span,.order-customer span{color:var(--muted);font-size:12px}.order-customer{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}.order-items{border-top:1px solid #eee0da;border-bottom:1px solid #eee0da}.admin-item{display:grid;grid-template-columns:48px 1fr auto;align-items:center;gap:10px;padding:8px 0}.admin-item img{width:48px;height:48px;border-radius:8px;object-fit:cover}.admin-item span{font-size:13px}.order-notes{font-size:12px;color:var(--muted)}.order-bottom{margin-top:14px}.order-bottom select{border:1px solid #dfc9c0;border-radius:9px;padding:9px;background:white}.paid{color:#287a4b;font-weight:700;font-size:12px}.pending{color:#a06a19;font-weight:700;font-size:12px}.empty{background:white;border:1px dashed #dfc9c0;padding:40px;text-align:center;border-radius:16px;color:var(--muted)}
+@media(max-width:680px){.stats{grid-template-columns:1fr 1fr}.order-bottom{align-items:stretch;flex-direction:column}.order-bottom select,.order-bottom button{width:100%}.cart-panel{padding:18px}.cart-item{grid-template-columns:70px 1fr}.cart-item-total{grid-column:2}.cart-item img{width:70px;height:70px}.admin-shell{padding-top:20px}}
+@media print{.admin-page{background:white}.admin-head button,.stats,.orders-list h2,.order-bottom select,.order-bottom button{display:none}.order-card{box-shadow:none;break-inside:avoid}}
