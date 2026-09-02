@@ -55,6 +55,10 @@ const labels = {
     paymentStarted: "Opening secure payment…",
     paymentFailed: "We could not start payment. Please try again.",
     paidMessage: "Your payment was received. Order number",
+    cash: "Cash",
+    paymentMethod: "Payment method",
+    placeCashOrder: "Place Order",
+    cashOrderReceived: "Your cash order has been received. Order number",
   },
 
   ar: {
@@ -90,6 +94,10 @@ const labels = {
     paymentStarted: "جاري فتح صفحة الدفع الآمنة…",
     paymentFailed: "تعذر بدء الدفع. حاول مرة أخرى.",
     paidMessage: "تم استلام دفعتك. رقم الطلب",
+    cash: "الدفع نقداً",
+    paymentMethod: "طريقة الدفع",
+    placeCashOrder: "تأكيد الطلب",
+    cashOrderReceived: "تم استلام طلبك النقدي. رقم الطلب",
   },
 };
 
@@ -140,6 +148,8 @@ export default function Home() {
   const [notes, setNotes] = useState("");
   const [paying, setPaying] = useState(false);
   const [paymentMessage, setPaymentMessage] = useState("");
+  const [paymentMethod, setPaymentMethod] =
+    useState<"online" | "cash">("online");
 
   useEffect(() => {
     try {
@@ -196,27 +206,75 @@ export default function Home() {
 
   const placeOrder = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (!customerName.trim() || !customerPhone.trim() || (orderType === "dine-in" && !tableNumber.trim())) return;
+
+    if (
+      !customerName.trim() ||
+      !customerPhone.trim() ||
+      (orderType === "dine-in" && !tableNumber.trim())
+    ) {
+      return;
+    }
+
     setPaying(true);
-    setPaymentMessage(t.paymentStarted);
+
+    setPaymentMessage(
+      paymentMethod === "cash"
+        ? t.cashOrderReceived
+        : t.paymentStarted
+    );
+
     try {
       const orderResponse = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customerName, customerPhone, orderType, tableNumber, notes, items: cart, total: cartTotal }),
+        body: JSON.stringify({
+          customerName,
+          customerPhone,
+          orderType,
+          tableNumber,
+          notes,
+          items: cart,
+          total: cartTotal,
+          paymentMethod,
+        }),
       });
+
       const orderData = await orderResponse.json();
-      if (!orderResponse.ok) throw new Error(orderData.error);
+
+      if (!orderResponse.ok) {
+        throw new Error(orderData.error);
+      }
+
+      // Cash orders are created as unpaid. The café admin can mark them paid.
+      if (paymentMethod === "cash") {
+        setCart([]);
+        setCheckoutOpen(false);
+        setPaymentMessage(
+          `${t.cashOrderReceived} ${orderData.order.order_number}`
+        );
+        setCartOpen(true);
+        setPaying(false);
+        return;
+      }
+
+      // Online orders continue to the secure MyFatoorah checkout.
       const paymentResponse = await fetch("/api/payments/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId: orderData.order.id }),
       });
+
       const paymentData = await paymentResponse.json();
-      if (!paymentResponse.ok || !paymentData.paymentUrl) throw new Error(paymentData.error);
+
+      if (!paymentResponse.ok || !paymentData.paymentUrl) {
+        throw new Error(paymentData.error);
+      }
+
       window.location.href = paymentData.paymentUrl;
     } catch (error) {
-      setPaymentMessage(error instanceof Error ? error.message : t.paymentFailed);
+      setPaymentMessage(
+        error instanceof Error ? error.message : t.paymentFailed
+      );
       setPaying(false);
     }
   };
@@ -676,10 +734,72 @@ export default function Home() {
                 <select value={orderType} onChange={e=>setOrderType(e.target.value as "pickup" | "dine-in")}><option value="pickup">{t.pickup}</option><option value="dine-in">{t.dineIn}</option></select>
                 {orderType === "dine-in" && <input required value={tableNumber} onChange={e=>setTableNumber(e.target.value)} placeholder={t.table}/>}
                 <textarea value={notes} onChange={e=>setNotes(e.target.value)} placeholder={t.notes}/>
-                <div className="cart-total"><span>{t.total}</span><span>{cartTotal.toFixed(2)} {t.currency}</span></div>
-                {paymentMessage && <p className="cart-note">{paymentMessage}</p>}
-                <button disabled={paying} className="pay-btn" type="submit">{paying ? t.paymentStarted : t.placeOrder}</button>
-                <p className="cart-note">Apple Pay and other payment methods are shown on the secure MyFatoorah checkout when enabled for the LinQafé merchant account.</p>
+                <div className="cart-total">
+                  <span>{t.total}</span>
+                  <span>
+                    {cartTotal.toFixed(2)} {t.currency}
+                  </span>
+                </div>
+
+                <div className="payment-method-section">
+                  <p className="payment-method-title">
+                    {t.paymentMethod}
+                  </p>
+
+                  <label
+                    className={`payment-option ${
+                      paymentMethod === "online" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="online"
+                      checked={paymentMethod === "online"}
+                      onChange={() => setPaymentMethod("online")}
+                    />
+                    <span>💳 Apple Pay / Card</span>
+                  </label>
+
+                  <label
+                    className={`payment-option ${
+                      paymentMethod === "cash" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="cash"
+                      checked={paymentMethod === "cash"}
+                      onChange={() => setPaymentMethod("cash")}
+                    />
+                    <span>💵 {t.cash}</span>
+                  </label>
+                </div>
+
+                {paymentMessage && (
+                  <p className="cart-note">{paymentMessage}</p>
+                )}
+
+                <button
+                  disabled={paying}
+                  className="pay-btn"
+                  type="submit"
+                >
+                  {paying
+                    ? t.paymentStarted
+                    : paymentMethod === "cash"
+                      ? t.placeCashOrder
+                      : t.placeOrder}
+                </button>
+
+                {paymentMethod === "online" && (
+                  <p className="cart-note">
+                    Apple Pay and other payment methods are shown on the secure
+                    MyFatoorah checkout when enabled for the LinQafé merchant
+                    account.
+                  </p>
+                )}
               </form>
             )}
           </aside>
