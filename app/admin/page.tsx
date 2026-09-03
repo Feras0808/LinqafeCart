@@ -63,19 +63,16 @@ export default function AdminPage() {
   const [historyDate, setHistoryDate] = useState("");
 
   // Printing
-  const [printingOrderId, setPrintingOrderId] =
-    useState<string | null>(null);
+  const [printingOrderId, setPrintingOrderId] = useState<string | null>(null);
 
   const getDateKey = (dateString: string) => {
     const date = new Date(dateString);
 
     const year = date.getFullYear();
-    const month = String(
-      date.getMonth() + 1
-    ).padStart(2, "0");
-    const day = String(
-      date.getDate()
-    ).padStart(2, "0");
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    const day = String(date.getDate()).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
   };
@@ -84,12 +81,10 @@ export default function AdminPage() {
     const date = new Date();
 
     const year = date.getFullYear();
-    const month = String(
-      date.getMonth() + 1
-    ).padStart(2, "0");
-    const day = String(
-      date.getDate()
-    ).padStart(2, "0");
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    const day = String(date.getDate()).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
   };
@@ -100,50 +95,40 @@ export default function AdminPage() {
     date.setDate(date.getDate() - 1);
 
     const year = date.getFullYear();
-    const month = String(
-      date.getMonth() + 1
-    ).padStart(2, "0");
-    const day = String(
-      date.getDate()
-    ).padStart(2, "0");
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    const day = String(date.getDate()).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
   };
 
   const load = async () => {
     try {
-      const meResponse = await fetch(
-        "/api/admin/me"
-      );
+      const meResponse = await fetch("/api/admin/me");
 
       const me = await meResponse.json();
 
       if (!me.authenticated) {
+        setAuthenticated(false);
         setLoading(false);
         return;
       }
 
       setAuthenticated(true);
 
-      const response = await fetch(
-        "/api/orders"
-      );
+      const response = await fetch("/api/orders");
 
       const data = await response.json();
 
       if (!response.ok) {
-        setError(
-          data.error ||
-            "Unable to load orders"
-        );
+        setError(data.error || "Unable to load orders");
       } else {
         setOrders(data.orders || []);
         setError("");
       }
     } catch {
-      setError(
-        "Unable to load orders"
-      );
+      setError("Unable to load orders");
     }
 
     setLoading(false);
@@ -166,9 +151,7 @@ export default function AdminPage() {
   // Set history date once
   useEffect(() => {
     if (!historyDate) {
-      setHistoryDate(
-        getYesterdayKey()
-      );
+      setHistoryDate(getYesterdayKey());
     }
   }, []);
 
@@ -178,44 +161,31 @@ export default function AdminPage() {
       setPrintingOrderId(null);
     };
 
-    window.addEventListener(
-      "afterprint",
-      handleAfterPrint
-    );
+    window.addEventListener("afterprint", handleAfterPrint);
 
     return () => {
-      window.removeEventListener(
-        "afterprint",
-        handleAfterPrint
-      );
+      window.removeEventListener("afterprint", handleAfterPrint);
     };
   }, []);
 
-  const login = async (
-    e: React.FormEvent
-  ) => {
+  const login = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setError("");
 
     try {
-      const response = await fetch(
-        "/api/admin/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            password,
-          }),
-        }
-      );
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          password,
+        }),
+      });
 
       if (!response.ok) {
-        setError(
-          "Incorrect password"
-        );
+        setError("Incorrect password");
         return;
       }
 
@@ -225,9 +195,7 @@ export default function AdminPage() {
 
       await load();
     } catch {
-      setError(
-        "Unable to sign in"
-      );
+      setError("Unable to sign in");
     }
   };
 
@@ -236,27 +204,22 @@ export default function AdminPage() {
     order_status: string
   ) => {
     try {
-      const response = await fetch(
-        `/api/orders/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            order_status,
-          }),
-        }
-      );
+      const response = await fetch(`/api/orders/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          order_status,
+        }),
+      });
 
       if (response.ok) {
         await load();
       } else {
-        const data =
-          await response
-            .json()
-            .catch(() => ({}));
+        const data = await response
+          .json()
+          .catch(() => ({}));
 
         setError(
           data.error ||
@@ -264,37 +227,28 @@ export default function AdminPage() {
         );
       }
     } catch {
-      setError(
-        "Unable to update order status"
-      );
+      setError("Unable to update order status");
     }
   };
 
-  const markCashAsPaid = async (
-    id: string
-  ) => {
+  const markCashAsPaid = async (id: string) => {
     try {
-      const response = await fetch(
-        `/api/orders/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type":
-              "application/json",
-          },
-          body: JSON.stringify({
-            payment_status: "paid",
-          }),
-        }
-      );
+      const response = await fetch(`/api/orders/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          payment_status: "paid",
+        }),
+      });
 
       if (response.ok) {
         await load();
       } else {
-        const data =
-          await response
-            .json()
-            .catch(() => ({}));
+        const data = await response
+          .json()
+          .catch(() => ({}));
 
         setError(
           data.error ||
@@ -302,30 +256,32 @@ export default function AdminPage() {
         );
       }
     } catch {
-      setError(
-        "Unable to mark cash payment as paid"
-      );
+      setError("Unable to mark cash payment as paid");
     }
   };
 
-  const printReceipt = (
-    id: string
-  ) => {
+  /*
+   * PRINT ONE ORDER ONLY
+   *
+   * This works for:
+   * - Today's orders
+   * - History orders
+   *
+   * We wait for React to add the print-target class
+   * before opening the browser print dialog.
+   */
+  const printReceipt = (id: string) => {
     setPrintingOrderId(id);
 
-    // Give React time to apply the print class
     setTimeout(() => {
       window.print();
-    }, 100);
+    }, 150);
   };
 
   const logout = async () => {
-    await fetch(
-      "/api/admin/logout",
-      {
-        method: "POST",
-      }
-    );
+    await fetch("/api/admin/logout", {
+      method: "POST",
+    });
 
     setAuthenticated(false);
   };
@@ -335,28 +291,21 @@ export default function AdminPage() {
   // ONLY today's orders
   const todayOrders = orders.filter(
     (order) =>
-      getDateKey(
-        order.created_at
-      ) === todayKey
+      getDateKey(order.created_at) === todayKey
   );
 
   // Selected history date
   const historyOrders = orders.filter(
     (order) =>
-      getDateKey(
-        order.created_at
-      ) === historyDate &&
-      getDateKey(
-        order.created_at
-      ) !== todayKey
+      getDateKey(order.created_at) === historyDate &&
+      getDateKey(order.created_at) !== todayKey
   );
 
   // Today's sales
   const sales = todayOrders
     .filter(
       (order) =>
-        order.payment_status ===
-        "paid"
+        order.payment_status === "paid"
     )
     .reduce(
       (sum, order) =>
@@ -370,46 +319,37 @@ export default function AdminPage() {
       ![
         "completed",
         "cancelled",
-      ].includes(
-        order.order_status
-      )
+      ].includes(order.order_status)
   );
 
   // Today's paid orders
   const paid = todayOrders.filter(
     (order) =>
-      order.payment_status ===
-      "paid"
+      order.payment_status === "paid"
   ).length;
 
   /*
    * CASH ORDERS
    *
-   * Cash is always displayed as
-   * UNPAID until staff marks it PAID.
+   * Cash is displayed as UNPAID until
+   * staff marks it as PAID.
    */
-  const getPaymentLabel = (
-    order: Order
-  ) => {
+  const getPaymentLabel = (order: Order) => {
     if (
-      order.payment_method ===
-        "cash" &&
-      order.payment_status !==
-        "paid"
+      order.payment_method === "cash" &&
+      order.payment_status !== "paid"
     ) {
       return "UNPAID";
     }
 
     if (
-      order.payment_status ===
-      "paid"
+      order.payment_status === "paid"
     ) {
       return "PAID";
     }
 
     if (
-      order.payment_status ===
-      "pending"
+      order.payment_status === "pending"
     ) {
       return "PENDING";
     }
@@ -417,11 +357,8 @@ export default function AdminPage() {
     return order.payment_status.toUpperCase();
   };
 
-  const getPaymentClass = (
-    order: Order
-  ) => {
-    const label =
-      getPaymentLabel(order);
+  const getPaymentClass = (order: Order) => {
+    const label = getPaymentLabel(order);
 
     if (label === "PAID") {
       return "paid";
@@ -434,11 +371,8 @@ export default function AdminPage() {
     return "pending";
   };
 
-  const getPaymentIcon = (
-    order: Order
-  ) => {
-    const label =
-      getPaymentLabel(order);
+  const getPaymentIcon = (order: Order) => {
+    const label = getPaymentLabel(order);
 
     if (
       label === "PAID" ||
@@ -469,21 +403,15 @@ export default function AdminPage() {
           className="admin-login"
           onSubmit={login}
         >
-          <h1>
-            LinQafé Admin
-          </h1>
+          <h1>LinQafé Admin</h1>
 
-          <p>
-            Staff sign in
-          </p>
+          <p>Staff sign in</p>
 
           <input
             type="password"
             value={password}
             onChange={(e) =>
-              setPassword(
-                e.target.value
-              )
+              setPassword(e.target.value)
             }
             placeholder="Admin password"
             autoFocus
@@ -494,9 +422,7 @@ export default function AdminPage() {
           </button>
 
           {error && (
-            <span>
-              {error}
-            </span>
+            <span>{error}</span>
           )}
         </form>
       </main>
@@ -506,9 +432,7 @@ export default function AdminPage() {
   /*
    * Reusable order card
    */
-  const renderOrder = (
-    order: Order
-  ) => {
+  const renderOrder = (order: Order) => {
     const paymentLabel =
       getPaymentLabel(order);
 
@@ -518,22 +442,30 @@ export default function AdminPage() {
     const paymentIcon =
       getPaymentIcon(order);
 
+    /*
+     * IMPORTANT:
+     *
+     * When printingOrderId exists:
+     *
+     * selected order = print-target
+     * all other orders = print-hidden
+     *
+     * This applies equally to Today's Orders
+     * and Order History.
+     */
+    const printClass = printingOrderId
+      ? printingOrderId === order.id
+        ? "print-target"
+        : "print-hidden"
+      : "";
+
     return (
       <article
-        className={`order-card ${
-          printingOrderId
-            ? printingOrderId ===
-              order.id
-              ? "print-target"
-              : "print-hidden"
-            : ""
-        }`}
+        className={`order-card ${printClass}`}
         key={order.id}
       >
-
         {/* TOP */}
         <div className="order-top">
-
           <div>
             <strong>
               {order.order_number}
@@ -549,14 +481,13 @@ export default function AdminPage() {
           <strong>
             {Number(
               order.total
-            ).toFixed(2)} QAR
+            ).toFixed(2)}{" "}
+            QAR
           </strong>
-
         </div>
 
         {/* CUSTOMER */}
         <div className="order-customer">
-
           <b>
             {order.customer_name}
           </b>
@@ -572,19 +503,16 @@ export default function AdminPage() {
               ? ` · Table ${order.table_number}`
               : ""}
           </span>
-
         </div>
 
         {/* ITEMS */}
         <div className="order-items">
-
           {order.items.map(
             (item, i) => (
               <div
                 className="admin-item"
                 key={`${item.name}-${i}`}
               >
-
                 <img
                   src={`/images/${item.image}`}
                   alt=""
@@ -601,11 +529,9 @@ export default function AdminPage() {
                     item.quantity
                   ).toFixed(2)}
                 </b>
-
               </div>
             )
           )}
-
         </div>
 
         {/* NOTES */}
@@ -618,13 +544,10 @@ export default function AdminPage() {
 
         {/* BOTTOM */}
         <div className="order-bottom">
-
           {/* STATUS BADGES */}
           <div className="order-statuses">
-
             {/* ORDER STATUS */}
             <div className="status-group">
-
               <span className="status-title">
                 ORDER STATUS:
               </span>
@@ -633,21 +556,16 @@ export default function AdminPage() {
                 className={`order-status-badge status-${order.order_status}`}
               >
                 <span className="status-icon">
-                  {
-                    statusIcons[
-                      order.order_status
-                    ] || "•"
-                  }
+                  {statusIcons[
+                    order.order_status
+                  ] || "•"}
                 </span>
 
-                {
-                  statusLabels[
-                    order.order_status
-                  ] ||
-                  order.order_status.toUpperCase()
-                }
+                {statusLabels[
+                  order.order_status
+                ] ||
+                  order.order_status.toUpperCase()}
               </span>
-
             </div>
 
             <span className="status-divider">
@@ -656,7 +574,6 @@ export default function AdminPage() {
 
             {/* PAYMENT STATUS */}
             <div className="status-group">
-
               <span className="status-title">
                 PAYMENT STATUS:
               </span>
@@ -676,20 +593,14 @@ export default function AdminPage() {
                     {order.payment_method.toUpperCase()}
                   </>
                 )}
-
               </span>
-
             </div>
-
           </div>
 
           {/* CONTROLS */}
           <div className="order-controls">
-
             <select
-              value={
-                order.order_status
-              }
+              value={order.order_status}
               onChange={(e) =>
                 updateStatus(
                   order.id,
@@ -732,18 +643,13 @@ export default function AdminPage() {
               type="button"
               className="print-btn"
               onClick={() =>
-                printReceipt(
-                  order.id
-                )
+                printReceipt(order.id)
               }
             >
               Print receipt
             </button>
-
           </div>
-
         </div>
-
       </article>
     );
   };
@@ -757,10 +663,8 @@ export default function AdminPage() {
       }`}
     >
       <div className="admin-shell">
-
         {/* HEADER */}
         <header className="admin-head">
-
           <div>
             <h1>
               LinQafé Orders
@@ -777,7 +681,6 @@ export default function AdminPage() {
           >
             Sign out
           </button>
-
         </header>
 
         {/* ERROR */}
@@ -789,7 +692,6 @@ export default function AdminPage() {
 
         {/* STATISTICS */}
         <section className="stats">
-
           <div>
             <span>
               Today's orders
@@ -829,14 +731,11 @@ export default function AdminPage() {
               {paid}
             </strong>
           </div>
-
         </section>
 
         {/* TODAY */}
         <section className="orders-list">
-
           <div className="section-heading-row">
-
             <div>
               <h2>
                 Today's Orders
@@ -846,7 +745,8 @@ export default function AdminPage() {
                 {todayOrders.length} order
                 {todayOrders.length !== 1
                   ? "s"
-                  : ""} today
+                  : ""}{" "}
+                today
               </p>
             </div>
 
@@ -863,7 +763,6 @@ export default function AdminPage() {
                 ? "Hide Order History"
                 : "View Order History"}
             </button>
-
           </div>
 
           {todayOrders.length === 0 ? (
@@ -875,15 +774,12 @@ export default function AdminPage() {
               renderOrder
             )
           )}
-
         </section>
 
         {/* ORDER HISTORY */}
         {historyOpen && (
           <section className="orders-list history-section">
-
             <div className="history-header">
-
               <div>
                 <h2>
                   Order History
@@ -896,7 +792,6 @@ export default function AdminPage() {
               </div>
 
               <div className="history-filter">
-
                 <label htmlFor="history-date">
                   Date
                 </label>
@@ -904,9 +799,7 @@ export default function AdminPage() {
                 <input
                   id="history-date"
                   type="date"
-                  value={
-                    historyDate
-                  }
+                  value={historyDate}
                   max={getYesterdayKey()}
                   onChange={(e) =>
                     setHistoryDate(
@@ -914,9 +807,7 @@ export default function AdminPage() {
                     )
                   }
                 />
-
               </div>
-
             </div>
 
             <div className="history-date-title">
@@ -926,14 +817,10 @@ export default function AdminPage() {
                   ).toLocaleDateString(
                     undefined,
                     {
-                      weekday:
-                        "long",
-                      year:
-                        "numeric",
-                      month:
-                        "long",
-                      day:
-                        "numeric",
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     }
                   )
                 : "Select a date"}
@@ -950,10 +837,8 @@ export default function AdminPage() {
                 renderOrder
               )
             )}
-
           </section>
         )}
-
       </div>
     </main>
   );
