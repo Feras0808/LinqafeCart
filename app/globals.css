@@ -1284,3 +1284,395 @@ button:focus-visible{
     -webkit-print-color-adjust: exact;
   }
 }
+/* =========================================================
+   ADMIN DATE FILTER + HISTORY
+   ========================================================= */
+
+.section-heading-row,
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.section-heading-row h2,
+.history-header h2 {
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  margin: 0;
+  color: #8a7476;
+  font-size: 13px;
+}
+
+.history-toggle {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #d8bbb3;
+  border-radius: 8px;
+  background: #fff;
+  color: #5d1d2a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.history-toggle:hover {
+  background: #5d1d2a;
+  color: #fff;
+}
+
+.history-section {
+  margin-top: 35px;
+  padding-top: 10px;
+}
+
+.history-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.history-filter label {
+  color: #5d4548;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.history-filter input {
+  height: 38px;
+  padding: 0 11px;
+  border: 1px solid #d8bbb3;
+  border-radius: 8px;
+  background: #fff;
+  color: #3b2428;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.history-date-title {
+  margin: 0 0 18px;
+  padding: 10px 13px;
+  border-radius: 8px;
+  background: #faf4f1;
+  color: #5d1d2a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ORDER STATUS AREA
+   ========================================================= */
+
+.order-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.order-statuses {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-title {
+  color: #4a3538;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-divider {
+  color: #d9c8c3;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.order-status-badge,
+.payment-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 29px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid currentColor;
+}
+
+.status-icon {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   ORDER STATUS COLORS
+   ========================================================= */
+
+.status-new {
+  color: #d99316;
+  background: #fff9e9;
+}
+
+.status-confirmed {
+  color: #3679bd;
+  background: #eef6ff;
+}
+
+.status-preparing {
+  color: #d66b22;
+  background: #fff3e8;
+}
+
+.status-ready {
+  color: #8062b8;
+  background: #f5f0ff;
+}
+
+.status-completed {
+  color: #39864e;
+  background: #eef9f0;
+}
+
+.status-cancelled {
+  color: #c44444;
+  background: #fff0f0;
+}
+
+
+/* =========================================================
+   PAYMENT STATUS COLORS
+   ========================================================= */
+
+.payment-status-badge.paid {
+  color: #39864e;
+  background: #eef9f0;
+}
+
+.payment-status-badge.unpaid {
+  color: #c05b32;
+  background: #fff3ed;
+}
+
+.payment-status-badge.pending {
+  color: #d27a20;
+  background: #fff8ed;
+}
+
+
+/* =========================================================
+   ORDER CONTROLS
+   ========================================================= */
+
+.order-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.order-controls select {
+  height: 32px;
+  min-width: 105px;
+  padding: 5px 9px;
+  border: 1px solid #dfc9c0;
+  border-radius: 7px;
+  background: #fff;
+  color: #3b2428;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.order-controls button {
+  height: 32px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cash-paid-btn {
+  background: #39864e !important;
+  color: #fff !important;
+}
+
+.cash-paid-btn:hover {
+  background: #2f713f !important;
+}
+
+.print-btn {
+  background: #5d1d2a !important;
+  color: #fff !important;
+}
+
+.print-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.admin-error {
+  margin-bottom: 18px;
+  padding: 11px 14px;
+  border: 1px solid #e7b7b7;
+  border-radius: 10px;
+  background: #fff0f0;
+  color: #a33b3b;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   PRINTING
+   ========================================================= */
+
+@media print {
+  body {
+    background: #fff !important;
+  }
+
+  .printing-order .admin-head,
+  .printing-order .stats,
+  .printing-order .section-heading-row,
+  .printing-order .history-section,
+  .printing-order .admin-error {
+    display: none !important;
+  }
+
+  .printing-order .orders-list {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .printing-order .orders-list > h2 {
+    display: none !important;
+  }
+
+  .printing-order .order-card.print-hidden {
+    display: none !important;
+  }
+
+  .printing-order .order-card.print-target {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  .printing-order .order-controls {
+    display: none !important;
+  }
+
+  .printing-order .order-bottom {
+    margin-top: 15px;
+  }
+
+  .printing-order .order-statuses {
+    display: flex !important;
+  }
+
+  .printing-order .order-card.print-target img {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .printing-order .order-status-badge,
+  .printing-order .payment-status-badge {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .section-heading-row,
+  .history-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .history-filter {
+    width: 100%;
+  }
+
+  .history-filter input {
+    flex: 1;
+  }
+
+  .order-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .order-statuses {
+    width: 100%;
+  }
+
+  .order-controls {
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .order-statuses {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .status-divider {
+    display: none;
+  }
+
+  .status-group {
+    flex-wrap: wrap;
+  }
+
+  .order-controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .order-controls select,
+  .order-controls button {
+    width: 100%;
+  }
+}
