@@ -1,301 +1,301 @@
 export const menuItems = [
-  {
-    "name": "Spanish Latte",
-    "arName": "سبانيش لاتيه",
-    "arDesc": "Rich espresso, creamy milk, and sweet condensed milk",
-    "description": "Rich espresso, creamy milk, and sweet condensed milk",
-    "price": 24,
-    "image": "spanish-latte.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Espresso",
-    "arName": "إسبريسو",
-    "arDesc": "Rich and intense espresso shot",
-    "description": "Rich and intense espresso shot",
-    "price": 14,
-    "image": "espresso.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Turkish Coffee",
-    "arName": "قهوة تركية",
-    "arDesc": "Traditional Turkish coffee with a rich, aromatic body",
-    "description": "Traditional Turkish coffee with a rich, aromatic body",
-    "price": 15,
-    "image": "turkish-coffee.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Americano",
-    "arName": "أمريكانو",
-    "arDesc": "Espresso topped with hot water for a smooth, balanced cup",
-    "description": "Espresso topped with hot water for a smooth, balanced cup",
-    "price": 16,
-    "image": "americano.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Cappuccino",
-    "arName": "كابتشينو",
-    "arDesc": "Espresso with steamed milk and a creamy layer of foam",
-    "description": "Espresso with steamed milk and a creamy layer of foam",
-    "price": 22,
-    "image": "cappuccino.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Latte",
-    "arName": "لاتيه",
-    "arDesc": "Smooth espresso blended with steamed milk and a light foam",
-    "description": "Smooth espresso blended with steamed milk and a light foam",
-    "price": 22,
-    "image": "latte.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Flat White",
-    "arName": "فلات وايت",
-    "arDesc": "Velvety espresso with silky steamed milk",
-    "description": "Velvety espresso with silky steamed milk",
-    "price": 22,
-    "image": "flat-white.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Mocha",
-    "arName": "موكا",
-    "arDesc": "Espresso with rich chocolate and steamed milk",
-    "description": "Espresso with rich chocolate and steamed milk",
-    "price": 22,
-    "image": "mocha.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Macchiato",
-    "arName": "ماكياتو",
-    "arDesc": "Espresso marked with a touch of steamed milk",
-    "description": "Espresso marked with a touch of steamed milk",
-    "price": 20,
-    "image": "macchiato.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Affogato",
-    "arName": "أفوجاتو",
-    "arDesc": "Espresso poured over creamy vanilla ice cream",
-    "description": "Espresso poured over creamy vanilla ice cream",
-    "price": 25,
-    "image": "affogato.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Cortado",
-    "arName": "كورتادو",
-    "arDesc": "Espresso balanced with warm steamed milk",
-    "description": "Espresso balanced with warm steamed milk",
-    "price": 20,
-    "image": "cortado.jpg",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Matcha",
-    "arName": "ماتشا",
-    "arDesc": "Smooth Japanese matcha prepared with creamy milk",
-    "description": "Smooth Japanese matcha prepared with creamy milk",
-    "price": 25,
-    "image": "matcha.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "V60",
-    "arName": "V60",
-    "arDesc": "Hand-brewed specialty coffee prepared with a V60 dripper",
-    "description": "Hand-brewed specialty coffee prepared with a V60 dripper",
-    "price": 23,
-    "image": "v60.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Chemex",
-    "arName": "كيمكس",
-    "arDesc": "Clean and aromatic hand-brewed coffee prepared with a Chemex",
-    "description": "Clean and aromatic hand-brewed coffee prepared with a Chemex",
-    "price": 27,
-    "image": "chemex.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Morrocan Tea",
-    "arName": "شاي مغربي",
-    "arDesc": "Traditional Moroccan tea with a refreshing aromatic character",
-    "description": "Traditional Moroccan tea with a refreshing aromatic character",
-    "price": 12,
-    "image": "moroccan-tea.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Earl Grey Tea",
-    "arName": "شاي إيرل غراي",
-    "arDesc": "Classic black tea infused with bergamot",
-    "description": "Classic black tea infused with bergamot",
-    "price": 12,
-    "image": "earl-grey-tea.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Chamomile Tea",
-    "arName": "شاي البابونج",
-    "arDesc": "Gentle and soothing chamomile tea",
-    "description": "Gentle and soothing chamomile tea",
-    "price": 12,
-    "image": "chamomile-tea.png",
-    "category": "hot-drinks"
-  },
-  {
-    "name": "Orange Juice",
-    "arName": "عصير برتقال",
-    "arDesc": "Fresh and refreshing orange juice",
-    "description": "Fresh and refreshing orange juice",
-    "price": 18,
-    "image": "orange-juice.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Mojito",
-    "arName": "موهيتو",
-    "arDesc": "Refreshing mint and citrus drink served chilled",
-    "description": "Refreshing mint and citrus drink served chilled",
-    "price": 26,
-    "image": "mojito.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Passion Fruit Soda",
-    "arName": "صودا باشن فروت",
-    "arDesc": "Sparkling passion fruit soda served over ice",
-    "description": "Sparkling passion fruit soda served over ice",
-    "price": 26,
-    "image": "passion-fruit-soda.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Berry Soda",
-    "arName": "صودا التوت",
-    "arDesc": "Refreshing sparkling berry soda served over ice",
-    "description": "Refreshing sparkling berry soda served over ice",
-    "price": 26,
-    "image": "berry-soda.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Lemonade",
-    "arName": "ليمونادة",
-    "arDesc": "Refreshing chilled lemonade with a bright citrus flavor",
-    "description": "Refreshing chilled lemonade with a bright citrus flavor",
-    "price": 26,
-    "image": "lemonade.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "LinQafe Signature",
-    "arName": "لينقافيه سيغنتشر",
-    "arDesc": "LinQafe signature chilled specialty drink",
-    "description": "LinQafe signature chilled specialty drink",
-    "price": 28,
-    "image": "linqafe-signature.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Spanish Latte",
-    "arName": "سبانيش لاتيه",
-    "arDesc": "Chilled espresso with creamy milk and sweetened flavor",
-    "description": "Chilled espresso with creamy milk and sweetened flavor",
-    "price": 24,
-    "image": "Iced Spanish latte.JPG",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Pistachio Latte",
-    "arName": "لاتيه بالفستق",
-    "arDesc": "Iced latte with creamy pistachio flavor",
-    "description": "Iced latte with creamy pistachio flavor",
-    "price": 25,
-    "image": "pistachio-latte.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Rose Latte",
-    "arName": "لاتيه بالورد",
-    "arDesc": "Iced latte with a delicate rose flavor",
-    "description": "Iced latte with a delicate rose flavor",
-    "price": 25,
-    "image": "rose-latte.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced Vanilla Latte",
-    "arName": "آيس فانيلا لاتيه",
-    "arDesc": "Iced latte with smooth vanilla flavor",
-    "description": "Iced latte with smooth vanilla flavor",
-    "price": 24,
-    "image": "iced-vanilla-latte.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Tiramisu Latte",
-    "arName": "تيراميسو لاتيه",
-    "arDesc": "Iced latte inspired by the rich flavors of tiramisu",
-    "description": "Iced latte inspired by the rich flavors of tiramisu",
-    "price": 25,
-    "image": "tiramisu-latte.jpg",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced Americano",
-    "arName": "آيس أمريكانو",
-    "arDesc": "Chilled espresso and water served over ice",
-    "description": "Chilled espresso and water served over ice",
-    "price": 16,
-    "image": "iced-americano.png",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced V60",
-    "arName": "آيس V60",
-    "arDesc": "Hand-brewed V60 coffee served chilled over ice",
-    "description": "Hand-brewed V60 coffee served chilled over ice",
-    "price": 23,
-    "image": "iced-v60.png",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced Chemex",
-    "arName": "آيس كيمكس",
-    "arDesc": "Clean and aromatic Chemex coffee served chilled over ice",
-    "description": "Clean and aromatic Chemex coffee served chilled over ice",
-    "price": 27,
-    "image": "iced-chemex.png",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced Latte",
-    "arName": "آيس لاتيه",
-    "arDesc": "Espresso and chilled milk served over ice",
-    "description": "Espresso and chilled milk served over ice",
-    "price": 22,
-    "image": "iced-latte.png",
-    "category": "cold-drinks"
-  },
-  {
-    "name": "Iced Mocha",
-    "arName": "آيس موكا",
-    "arDesc": "Iced espresso, milk and chocolate topped with cocoa powder",
-    "description": "Iced espresso, milk and chocolate topped with cocoa powder",
-    "price": 22,
-    "image": "iced-mocha.png",
-    "category": "cold-drinks"
-  },
+ {
+  name: "Spanish Latte",
+  arName: "سبانيش لاتيه",
+  arDesc: "إسبريسو غني مع حليب كريمي وحليب مكثف محلى",
+  description: "Rich espresso, creamy milk, and sweet condensed milk",
+  price: 24,
+  image: "spanish-latte.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Espresso",
+  arName: "إسبريسو",
+  arDesc: "جرعة إسبريسو غنية ومركزة",
+  description: "Rich and intense espresso shot",
+  price: 14,
+  image: "espresso.png",
+  category: "hot-drinks"
+},
+{
+  name: "Turkish Coffee",
+  arName: "قهوة تركية",
+  arDesc: "قهوة تركية تقليدية بقوام غني ونكهة عطرية مميزة",
+  description: "Traditional Turkish coffee with a rich, aromatic body",
+  price: 15,
+  image: "turkish-coffee.png",
+  category: "hot-drinks"
+},
+{
+  name: "Americano",
+  arName: "أمريكانو",
+  arDesc: "إسبريسو مع ماء ساخن لمذاق متوازن وسلس",
+  description: "Espresso topped with hot water for a smooth, balanced cup",
+  price: 16,
+  image: "americano.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Cappuccino",
+  arName: "كابتشينو",
+  arDesc: "إسبريسو مع حليب مبخر وطبقة كريمية من الرغوة",
+  description: "Espresso with steamed milk and a creamy layer of foam",
+  price: 22,
+  image: "cappuccino.png",
+  category: "hot-drinks"
+},
+{
+  name: "Latte",
+  arName: "لاتيه",
+  arDesc: "إسبريسو ناعم ممزوج بحليب مبخر ورغوة خفيفة",
+  description: "Smooth espresso blended with steamed milk and a light foam",
+  price: 22,
+  image: "latte.png",
+  category: "hot-drinks"
+},
+{
+  name: "Flat White",
+  arName: "فلات وايت",
+  arDesc: "إسبريسو غني مع حليب مبخر ناعم وكريمي",
+  description: "Velvety espresso with silky steamed milk",
+  price: 22,
+  image: "flat-white.png",
+  category: "hot-drinks"
+},
+{
+  name: "Mocha",
+  arName: "موكا",
+  arDesc: "إسبريسو مع شوكولاتة غنية وحليب مبخر",
+  description: "Espresso with rich chocolate and steamed milk",
+  price: 22,
+  image: "mocha.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Macchiato",
+  arName: "ماكياتو",
+  arDesc: "إسبريسو مع لمسة من الحليب المبخر",
+  description: "Espresso marked with a touch of steamed milk",
+  price: 20,
+  image: "macchiato.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Affogato",
+  arName: "أفوجاتو",
+  arDesc: "إسبريسو غني يقدم فوق آيس كريم الفانيلا الكريمي",
+  description: "Espresso poured over creamy vanilla ice cream",
+  price: 25,
+  image: "affogato.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Cortado",
+  arName: "كورتادو",
+  arDesc: "إسبريسو متوازن مع حليب مبخر دافئ",
+  description: "Espresso balanced with warm steamed milk",
+  price: 20,
+  image: "cortado.jpg",
+  category: "hot-drinks"
+},
+{
+  name: "Matcha",
+  arName: "ماتشا",
+  arDesc: "ماتشا يابانية ناعمة محضرة مع حليب كريمي",
+  description: "Smooth Japanese matcha prepared with creamy milk",
+  price: 25,
+  image: "matcha.png",
+  category: "hot-drinks"
+},
+{
+  name: "V60",
+  arName: "V60",
+  arDesc: "قهوة مختصة محضرة يدوياً باستخدام أداة V60",
+  description: "Hand-brewed specialty coffee prepared with a V60 dripper",
+  price: 23,
+  image: "v60.png",
+  category: "hot-drinks"
+},
+{
+  name: "Chemex",
+  arName: "كيمكس",
+  arDesc: "قهوة مقطرة يدوياً بنكهة نقية وعطرية محضرة باستخدام الكيمكس",
+  description: "Clean and aromatic hand-brewed coffee prepared with a Chemex",
+  price: 27,
+  image: "chemex.png",
+  category: "hot-drinks"
+},
+{
+  name: "Morrocan Tea",
+  arName: "شاي مغربي",
+  arDesc: "شاي مغربي تقليدي بنكهة منعشة وعطرية",
+  description: "Traditional Moroccan tea with a refreshing aromatic character",
+  price: 12,
+  image: "moroccan-tea.png",
+  category: "hot-drinks"
+},
+{
+  name: "Earl Grey Tea",
+  arName: "شاي إيرل غراي",
+  arDesc: "شاي أسود كلاسيكي بنكهة البرغموت العطرية",
+  description: "Classic black tea infused with bergamot",
+  price: 12,
+  image: "earl-grey-tea.png",
+  category: "hot-drinks"
+},
+{
+  name: "Chamomile Tea",
+  arName: "شاي البابونج",
+  arDesc: "شاي بابونج ناعم وهادئ بنكهة لطيفة",
+  description: "Gentle and soothing chamomile tea",
+  price: 12,
+  image: "chamomile-tea.png",
+  category: "hot-drinks"
+},
+{
+  name: "Orange Juice",
+  arName: "عصير برتقال",
+  arDesc: "عصير برتقال طازج ومنعش",
+  description: "Fresh and refreshing orange juice",
+  price: 18,
+  image: "orange-juice.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Mojito",
+  arName: "موهيتو",
+  arDesc: "مشروب منعش بالنعناع والحمضيات يقدم بارداً",
+  description: "Refreshing mint and citrus drink served chilled",
+  price: 26,
+  image: "mojito.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Passion Fruit Soda",
+  arName: "صودا باشن فروت",
+  arDesc: "صودا باشن فروت فوارة ومنعشة تقدم مع الثلج",
+  description: "Sparkling passion fruit soda served over ice",
+  price: 26,
+  image: "passion-fruit-soda.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Berry Soda",
+  arName: "صودا التوت",
+  arDesc: "صودا التوت الفوارة والمنعشة تقدم مع الثلج",
+  description: "Refreshing sparkling berry soda served over ice",
+  price: 26,
+  image: "berry-soda.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Lemonade",
+  arName: "ليمونادة",
+  arDesc: "ليمونادة منعشة وباردة بنكهة حمضيات مشرقة",
+  description: "Refreshing chilled lemonade with a bright citrus flavor",
+  price: 26,
+  image: "lemonade.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "LinQafe Signature",
+  arName: "لينقافيه سيغنتشر",
+  arDesc: "مشروب لينقافيه المميز والمنعش يقدم بارداً",
+  description: "LinQafe signature chilled specialty drink",
+  price: 28,
+  image: "linqafe-signature.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Spanish Latte",
+  arName: "سبانيش لاتيه",
+  arDesc: "إسبريسو بارد مع حليب كريمي ونكهة حلوة",
+  description: "Chilled espresso with creamy milk and sweetened flavor",
+  price: 24,
+  image: "Iced Spanish latte.JPG",
+  category: "cold-drinks"
+},
+{
+  name: "Pistachio Latte",
+  arName: "لاتيه بالفستق",
+  arDesc: "لاتيه بارد بنكهة الفستق الكريمية",
+  description: "Iced latte with creamy pistachio flavor",
+  price: 25,
+  image: "pistachio-latte.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Rose Latte",
+  arName: "لاتيه بالورد",
+  arDesc: "لاتيه بارد بنكهة الورد الرقيقة",
+  description: "Iced latte with a delicate rose flavor",
+  price: 25,
+  image: "rose-latte.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Iced Vanilla Latte",
+  arName: "آيس فانيلا لاتيه",
+  arDesc: "لاتيه بارد بنكهة الفانيلا الناعمة",
+  description: "Iced latte with smooth vanilla flavor",
+  price: 24,
+  image: "iced-vanilla-latte.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Tiramisu Latte",
+  arName: "تيراميسو لاتيه",
+  arDesc: "لاتيه بارد مستوحى من نكهات التيراميسو الغنية",
+  description: "Iced latte inspired by the rich flavors of tiramisu",
+  price: 25,
+  image: "tiramisu-latte.jpg",
+  category: "cold-drinks"
+},
+{
+  name: "Iced Americano",
+  arName: "آيس أمريكانو",
+  arDesc: "إسبريسو وماء بارد يقدمان مع الثلج",
+  description: "Chilled espresso and water served over ice",
+  price: 16,
+  image: "iced-americano.png",
+  category: "cold-drinks"
+},
+{
+  name: "Iced V60",
+  arName: "آيس V60",
+  arDesc: "قهوة V60 محضرة يدوياً وتقدم باردة مع الثلج",
+  description: "Hand-brewed V60 coffee served chilled over ice",
+  price: 23,
+  image: "iced-v60.png",
+  category: "cold-drinks"
+},
+{
+  name: "Iced Chemex",
+  arName: "آيس كيمكس",
+  arDesc: "قهوة كيمكس نقية وعطرية تقدم باردة مع الثلج",
+  description: "Clean and aromatic Chemex coffee served chilled over ice",
+  price: 27,
+  image: "iced-chemex.png",
+  category: "cold-drinks"
+},
+{
+  name: "Iced Latte",
+  arName: "آيس لاتيه",
+  arDesc: "إسبريسو وحليب بارد يقدمان مع الثلج",
+  description: "Espresso and chilled milk served over ice",
+  price: 22,
+  image: "iced-latte.png",
+  category: "cold-drinks"
+},
+{
+  name: "Iced Mocha",
+  arName: "آيس موكا",
+  arDesc: "إسبريسو بارد مع الحليب والشوكولاتة ويعلوه مسحوق الكاكاو",
+  description: "Iced espresso, milk and chocolate topped with cocoa powder",
+  price: 22,
+  image: "iced-mocha.png",
+  category: "cold-drinks"
+},
   {
     "name": "Butter Croissant",
     "arName": "كرواسون بالزبدة",
