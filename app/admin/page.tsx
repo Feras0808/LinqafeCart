@@ -61,6 +61,7 @@ export default function AdminPage() {
   // New-order notification sound
   const knownOrderIds = useRef<Set<string> | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
+  const [soundEnabled, setSoundEnabled] = useState(false);
 
   // History
   const [historyOpen, setHistoryOpen] = useState(false);
@@ -107,10 +108,9 @@ export default function AdminPage() {
     return `${year}-${month}-${day}`;
   };
 
-  // Plays a short café-style notification chime.
-  // Browsers may block audio until the employee interacts with the page,
-  // so the first login/click unlocks the audio context.
-  const playNewOrderSound = () => {
+  // Reliable browser notification chime.
+  // The employee enables it with the button in the dashboard header.
+  const playNewOrderSound = async () => {
     if (typeof window === "undefined") return;
 
     try {
@@ -128,46 +128,61 @@ export default function AdminPage() {
 
       const ctx = audioContextRef.current;
 
-      const play = () => {
-        const now = ctx.currentTime;
-
-        const notes = [
-          { frequency: 880, start: 0, duration: 0.14 },
-          { frequency: 1174.66, start: 0.16, duration: 0.2 },
-        ];
-
-        notes.forEach(({ frequency, start, duration }) => {
-          const oscillator = ctx.createOscillator();
-          const gain = ctx.createGain();
-
-          oscillator.type = "sine";
-          oscillator.frequency.setValueAtTime(frequency, now + start);
-
-          gain.gain.setValueAtTime(0.0001, now + start);
-          gain.gain.exponentialRampToValueAtTime(
-            0.18,
-            now + start + 0.02
-          );
-          gain.gain.exponentialRampToValueAtTime(
-            0.0001,
-            now + start + duration
-          );
-
-          oscillator.connect(gain);
-          gain.connect(ctx.destination);
-
-          oscillator.start(now + start);
-          oscillator.stop(now + start + duration);
-        });
-      };
-
       if (ctx.state === "suspended") {
-        ctx.resume().then(play).catch(() => {});
-      } else {
-        play();
+        await ctx.resume();
       }
-    } catch {
-      // Notification sound should never break the admin dashboard.
+
+      const now = ctx.currentTime;
+
+      // Three clear notification notes.
+      [880, 1174.66, 1567.98].forEach((frequency, index) => {
+        const startTime = now + index * 0.16;
+        const oscillator = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(frequency, startTime);
+
+        gain.gain.setValueAtTime(0.0001, startTime);
+        gain.gain.exponentialRampToValueAtTime(0.35, startTime + 0.025);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.14);
+
+        oscillator.connect(gain);
+        gain.connect(ctx.destination);
+
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.15);
+      });
+    } catch (err) {
+      console.error("LinQafé notification sound error:", err);
+    }
+  };
+
+  const enableSound = async () => {
+    try {
+      const AudioContextClass =
+        window.AudioContext ||
+        (window as typeof window & {
+          webkitAudioContext?: typeof AudioContext;
+        }).webkitAudioContext;
+
+      if (!AudioContextClass) return;
+
+      if (!audioContextRef.current) {
+        audioContextRef.current = new AudioContextClass();
+      }
+
+      await audioContextRef.current.resume();
+      setSoundEnabled(true);
+
+      // Test sound immediately so staff knows it works.
+      await playNewOrderSound();
+
+      if ("Notification" in window && Notification.permission === "default") {
+        await Notification.requestPermission();
+      }
+    } catch (err) {
+      console.error("Unable to enable notification sound:", err);
     }
   };
 
@@ -210,7 +225,9 @@ export default function AdminPage() {
               knownOrderIds.current!.add(order.id);
             });
 
-            playNewOrderSound();
+            if (soundEnabled) {
+              void playNewOrderSound();
+            }
 
             // Optional browser notification when permission is already granted.
             if (
@@ -257,7 +274,7 @@ export default function AdminPage() {
     }, 15000);
 
     return () => clearInterval(interval);
-  }, [authenticated]);
+  }, [authenticated, soundEnabled]);
 
   // Set history date once
   useEffect(() => {
@@ -817,12 +834,24 @@ export default function AdminPage() {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={logout}
-          >
-            Sign out
-          </button>
+          <div className="admin-head-actions">
+            <button
+              type="button"
+              onClick={enableSound}
+              title="Enable and test new-order sound"
+            >
+              {soundEnabled
+                ? "🔊 Sound On"
+                : "🔔 Enable Order Sound"}
+            </button>
+
+            <button
+              type="button"
+              onClick={logout}
+            >
+              Sign out
+            </button>
+          </div>
         </header>
 
         {/* ERROR */}
