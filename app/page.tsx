@@ -286,13 +286,6 @@ export default function Home() {
    */
 
   const visibleItems = useMemo(() => {
-    if (
-      category === "cold-drinks" ||
-      category === "hot-drinks"
-    ) {
-      return [];
-    }
-
     return menuItems.filter(
       (item) => item.category === category
     );
