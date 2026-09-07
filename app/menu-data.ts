@@ -1,5 +1,14 @@
 export const menuItems = [
   {
+    "name": "Spanish Latte",
+    "arName": "سبانيش لاتيه",
+    "arDesc": "Rich espresso, creamy milk, and sweet condensed milk",
+    "description": "Rich espresso, creamy milk, and sweet condensed milk",
+    "price": 24,
+    "image": "spanish-latte.jpg",
+    "category": "hot-drinks"
+  },
+  {
     "name": "Espresso",
     "arName": "إسبريسو",
     "arDesc": "Rich and intense espresso shot",
@@ -203,7 +212,7 @@ export const menuItems = [
     "arDesc": "Chilled espresso with creamy milk and sweetened flavor",
     "description": "Chilled espresso with creamy milk and sweetened flavor",
     "price": 24,
-    "image": "spanish-latte.jpg",
+    "image": "Iced Spanish latte.JPG",
     "category": "cold-drinks"
   },
   {
