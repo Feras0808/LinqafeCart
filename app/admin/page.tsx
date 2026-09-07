@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Order = {
   id: string;
@@ -58,6 +58,10 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // New-order notification sound
+  const knownOrderIds = useRef<Set<string> | null>(null);
+  const audioContextRef = useRef<AudioContext | null>(null);
+
   // History
   const [historyOpen, setHistoryOpen] = useState(false);
   const [historyDate, setHistoryDate] = useState("");
@@ -103,6 +107,70 @@ export default function AdminPage() {
     return `${year}-${month}-${day}`;
   };
 
+  // Plays a short café-style notification chime.
+  // Browsers may block audio until the employee interacts with the page,
+  // so the first login/click unlocks the audio context.
+  const playNewOrderSound = () => {
+    if (typeof window === "undefined") return;
+
+    try {
+      const AudioContextClass =
+        window.AudioContext ||
+        (window as typeof window & {
+          webkitAudioContext?: typeof AudioContext;
+        }).webkitAudioContext;
+
+      if (!AudioContextClass) return;
+
+      if (!audioContextRef.current) {
+        audioContextRef.current = new AudioContextClass();
+      }
+
+      const ctx = audioContextRef.current;
+
+      const play = () => {
+        const now = ctx.currentTime;
+
+        const notes = [
+          { frequency: 880, start: 0, duration: 0.14 },
+          { frequency: 1174.66, start: 0.16, duration: 0.2 },
+        ];
+
+        notes.forEach(({ frequency, start, duration }) => {
+          const oscillator = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          oscillator.type = "sine";
+          oscillator.frequency.setValueAtTime(frequency, now + start);
+
+          gain.gain.setValueAtTime(0.0001, now + start);
+          gain.gain.exponentialRampToValueAtTime(
+            0.18,
+            now + start + 0.02
+          );
+          gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            now + start + duration
+          );
+
+          oscillator.connect(gain);
+          gain.connect(ctx.destination);
+
+          oscillator.start(now + start);
+          oscillator.stop(now + start + duration);
+        });
+      };
+
+      if (ctx.state === "suspended") {
+        ctx.resume().then(play).catch(() => {});
+      } else {
+        play();
+      }
+    } catch {
+      // Notification sound should never break the admin dashboard.
+    }
+  };
+
   const load = async () => {
     try {
       const meResponse = await fetch("/api/admin/me");
@@ -124,7 +192,50 @@ export default function AdminPage() {
       if (!response.ok) {
         setError(data.error || "Unable to load orders");
       } else {
-        setOrders(data.orders || []);
+        const incomingOrders: Order[] = data.orders || [];
+
+        // First successful load establishes the baseline silently.
+        // Every later load only sounds for an order that was not previously seen.
+        if (knownOrderIds.current === null) {
+          knownOrderIds.current = new Set(
+            incomingOrders.map((order) => order.id)
+          );
+        } else {
+          const newOrders = incomingOrders.filter(
+            (order) => !knownOrderIds.current!.has(order.id)
+          );
+
+          if (newOrders.length > 0) {
+            newOrders.forEach((order) => {
+              knownOrderIds.current!.add(order.id);
+            });
+
+            playNewOrderSound();
+
+            // Optional browser notification when permission is already granted.
+            if (
+              typeof window !== "undefined" &&
+              "Notification" in window &&
+              Notification.permission === "granted"
+            ) {
+              newOrders.forEach((order) => {
+                new Notification("New LinQafé Order", {
+                  body: `${order.order_number} · ${Number(order.total).toFixed(
+                    2
+                  )} QAR`,
+                  icon: "/favicon.ico",
+                });
+              });
+            }
+          }
+        }
+
+        // Keep the ID list current even if an order was removed/cancelled.
+        incomingOrders.forEach((order) =>
+          knownOrderIds.current?.add(order.id)
+        );
+
+        setOrders(incomingOrders);
         setError("");
       }
     } catch {
@@ -192,6 +303,37 @@ export default function AdminPage() {
       setPassword("");
       setAuthenticated(true);
       setLoading(true);
+
+      // Unlock browser audio after the employee's login interaction.
+      try {
+        if (typeof window !== "undefined") {
+          const AudioContextClass =
+            window.AudioContext ||
+            (window as typeof window & {
+              webkitAudioContext?: typeof AudioContext;
+            }).webkitAudioContext;
+
+          if (AudioContextClass) {
+            if (!audioContextRef.current) {
+              audioContextRef.current = new AudioContextClass();
+            }
+
+            if (audioContextRef.current.state === "suspended") {
+              await audioContextRef.current.resume();
+            }
+          }
+
+          // Ask once for desktop/browser notifications.
+          if (
+            "Notification" in window &&
+            Notification.permission === "default"
+          ) {
+            await Notification.requestPermission();
+          }
+        }
+      } catch {
+        // Audio/notifications are optional and must not block login.
+      }
 
       await load();
     } catch {
