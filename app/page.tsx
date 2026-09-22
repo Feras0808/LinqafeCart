@@ -164,24 +164,64 @@ export default function Home() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const paymentId = params.get("paymentId");
+    const tapId = params.get("tap_id");
     const orderId = params.get("order");
-    if (!paymentId || !orderId) return;
+
+    if (!tapId || !orderId) return;
+
+    setPaying(true);
+    setPaymentMessage(t.paymentStarted);
+
     fetch("/api/payments/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ paymentId, orderId }),
-    }).then(async (r) => {
-      const data = await r.json();
-      if (data.paid) {
-        setCart([]);
-        setCartOpen(true);
-        setCheckoutOpen(false);
-        setPaymentMessage(`${t.paidMessage} ${orderId.slice(0, 8)}`);
-      }
-      window.history.replaceState({}, "", window.location.pathname);
-    }).catch(() => {});
-  }, []);
+      body: JSON.stringify({
+        paymentId: tapId,
+        orderId,
+      }),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data?.error || t.paymentFailed
+          );
+        }
+
+        if (data.paid) {
+          setCart([]);
+          setCheckoutOpen(false);
+          setCartOpen(true);
+          setPaymentMessage(
+            `${t.paidMessage} ${orderId.slice(0, 8)}`
+          );
+        } else {
+          setPaymentMessage(
+            data?.status
+              ? `Payment status: ${data.status}`
+              : t.paymentFailed
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Tap payment verification error:", error);
+        setPaymentMessage(
+          error instanceof Error
+            ? error.message
+            : t.paymentFailed
+        );
+      })
+      .finally(() => {
+        setPaying(false);
+      });
+
+    window.history.replaceState(
+      {},
+      "",
+      window.location.pathname
+    );
+  }, [t]);
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -257,7 +297,7 @@ export default function Home() {
         return;
       }
 
-      // Online orders continue to the secure MyFatoorah checkout.
+      // Online orders continue to the secure Tap checkout.
       const paymentResponse = await fetch("/api/payments/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -789,7 +829,7 @@ export default function Home() {
                 {paymentMethod === "online" && (
                   <p className="cart-note">
                     Apple Pay and other payment methods are shown on the secure
-                    MyFatoorah checkout when enabled for the LinQafé merchant
+                    Tap checkout when enabled for the LinQafé merchant
                     account.
                   </p>
                 )}
