@@ -2014,3 +2014,36 @@ button:focus-visible{
     margin:10mm;
   }
 }
+
+/* =========================================================
+   SECONDARY VIDEO — ADDITION ONLY
+   ========================================================= */
+.secondary-video-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 32px auto 0;
+  padding: 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.secondary-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+  border-radius: 14px;
+}
+
+@media (max-width: 600px) {
+  .secondary-video-section {
+    margin-top: 24px;
+    padding: 0 12px;
+  }
+
+  .secondary-video {
+    border-radius: 10px;
+  }
+}

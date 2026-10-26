@@ -105,37 +105,18 @@ const categories: {
   id: Category;
   icon: string;
 }[] = [
-  {
-    id: "sandwiches",
-    icon: "🥪",
-  },
-  {
-    id: "cold-drinks",
-    icon: "🧊",
-  },
-  {
-    id: "salads",
-    icon: "🥗",
-  },
-  {
-    id: "desserts",
-    icon: "🍰",
-  },
-  {
-    id: "hot-drinks",
-    icon: "☕",
-  },
+  { id: "sandwiches", icon: "🥪" },
+  { id: "cold-drinks", icon: "🧊" },
+  { id: "salads", icon: "🥗" },
+  { id: "desserts", icon: "🍰" },
+  { id: "hot-drinks", icon: "☕" },
 ];
 
 export default function Home() {
-  const [language, setLanguage] =
-    useState<Language | null>(null);
-
-  const [category, setCategory] =
-    useState<Category>("sandwiches");
+  const [language, setLanguage] = useState<Language | null>(null);
+  const [category, setCategory] = useState<Category>("sandwiches");
 
   const t = labels[language ?? "en"];
-
   const rtl = language === "ar";
 
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -184,9 +165,7 @@ export default function Home() {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(
-            data?.error || t.paymentFailed
-          );
+          throw new Error(data?.error || t.paymentFailed);
         }
 
         if (data.paid) {
@@ -207,36 +186,60 @@ export default function Home() {
       .catch((error) => {
         console.error("Tap payment verification error:", error);
         setPaymentMessage(
-          error instanceof Error
-            ? error.message
-            : t.paymentFailed
+          error instanceof Error ? error.message : t.paymentFailed
         );
       })
       .finally(() => {
         setPaying(false);
       });
 
-    window.history.replaceState(
-      {},
-      "",
-      window.location.pathname
-    );
+    window.history.replaceState({}, "", window.location.pathname);
   }, [t]);
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const addToCart = (item: typeof menuItems[number]) => {
+  const cartTotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const addToCart = (item: (typeof menuItems)[number]) => {
     setCart((current) => {
       const existing = current.find((entry) => entry.name === item.name);
-      if (existing) return current.map((entry) => entry.name === item.name ? { ...entry, quantity: entry.quantity + 1 } : entry);
-      return [...current, { name: item.name, arName: item.arName, image: item.image, price: item.price, quantity: 1 }];
+
+      if (existing) {
+        return current.map((entry) =>
+          entry.name === item.name
+            ? { ...entry, quantity: entry.quantity + 1 }
+            : entry
+        );
+      }
+
+      return [
+        ...current,
+        {
+          name: item.name,
+          arName: item.arName,
+          image: item.image,
+          price: item.price,
+          quantity: 1,
+        },
+      ];
     });
+
     setCartOpen(true);
   };
 
   const changeQuantity = (name: string, amount: number) => {
-    setCart((current) => current.map((item) => item.name === name ? { ...item, quantity: item.quantity + amount } : item).filter((item) => item.quantity > 0));
+    setCart((current) =>
+      current
+        .map((item) =>
+          item.name === name
+            ? { ...item, quantity: item.quantity + amount }
+            : item
+        )
+        .filter((item) => item.quantity > 0)
+    );
   };
 
   const startCheckout = () => {
@@ -285,7 +288,8 @@ export default function Home() {
         throw new Error(orderData.error);
       }
 
-      // Cash orders are created as unpaid. The café admin can mark them paid.
+      // Cash orders are created as unpaid.
+      // The café admin can mark them paid.
       if (paymentMethod === "cash") {
         setCart([]);
         setCheckoutOpen(false);
@@ -297,7 +301,7 @@ export default function Home() {
         return;
       }
 
-      // Online orders continue to the secure Tap checkout.
+      // Continue to secure Tap checkout for online payments.
       const paymentResponse = await fetch("/api/payments/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -319,48 +323,27 @@ export default function Home() {
     }
   };
 
-  /*
-   * =====================================================
-   * FILTER MENU ITEMS
-   * =====================================================
-   */
-
   const visibleItems = useMemo(() => {
-    return menuItems.filter(
-      (item) => item.category === category
-    );
+    return menuItems.filter((item) => item.category === category);
   }, [category]);
-
-  /*
-   * =====================================================
-   * GO HOME
-   * =====================================================
-   */
 
   const goHome = () => {
     setLanguage(null);
     setCategory("sandwiches");
   };
 
-  /*
-   * =====================================================
-   * LANDING PAGE
-   * =====================================================
-   */
+  // =====================================================
+  // LANDING PAGE
+  // =====================================================
 
   if (!language) {
     return (
       <main className="landing">
-
         {/* BACKGROUND OVERLAY */}
         <div className="landing-overlay" />
 
         <div className="landing-content">
-
-          {/* =================================================
-              TOP LOGO
-          ================================================= */}
-
+          {/* TOP LOGO */}
           <button
             type="button"
             className="brand-pill"
@@ -376,13 +359,9 @@ export default function Home() {
             />
           </button>
 
-          {/* =================================================
-              HERO CARD
-          ================================================= */}
-
+          {/* HERO CARD */}
           <div className="hero-card">
-
-            {/* VIDEO */}
+            {/* EXISTING HERO VIDEO */}
             <video
               src="/hero.mov"
               autoPlay
@@ -396,22 +375,14 @@ export default function Home() {
             {/* VIDEO SHADE */}
             <div className="hero-shade" />
 
-
             <div className="hero-copy">
-
-              {/* CHOOSE YOUR MENU */}
-              <h1>
-                {t.choose}
-              </h1>
+              <h1>{t.choose}</h1>
 
               {/* LANGUAGE BUTTONS */}
               <div className="language-buttons">
-
                 <button
                   type="button"
-                  onClick={() =>
-                    setLanguage("en")
-                  }
+                  onClick={() => setLanguage("en")}
                   className="language-btn primary"
                 >
                   {t.english}
@@ -419,56 +390,54 @@ export default function Home() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setLanguage("ar")
-                  }
+                  onClick={() => setLanguage("ar")}
                   className="language-btn"
                 >
                   {t.arabic}
                 </button>
-
               </div>
-
             </div>
-
           </div>
 
           {/* =================================================
-              LANDING FOOTER
+              SECOND VIDEO — STANDALONE WITH CONTROLS
           ================================================= */}
+          <section
+            className="secondary-video-section"
+            aria-label="LinQafé promotional video"
+          >
+            <video
+              src="/linqafe.mov"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="secondary-video"
+              aria-label="LinQafé promotional video"
+            />
+          </section>
 
-          <p className="landing-footer">
-            LinQafé
-          </p>
-
+          {/* LANDING FOOTER */}
+          <p className="landing-footer">LinQafé</p>
         </div>
-
       </main>
     );
   }
 
-  /*
-   * =====================================================
-   * MENU PAGE
-   * =====================================================
-   */
+  // =====================================================
+  // MENU PAGE
+  // =====================================================
 
   return (
     <main
-      className={`menu-page ${
-        rtl ? "rtl" : ""
-      }`}
+      className={`menu-page ${rtl ? "rtl" : ""}`}
       dir={rtl ? "rtl" : "ltr"}
     >
-
-      {/* =================================================
-          MENU HEADER
-      ================================================= */}
-
+      {/* MENU HEADER */}
       <header className="menu-header">
-
         <div className="header-inner">
-
           {/* CLICKABLE LOGO */}
           <button
             type="button"
@@ -487,72 +456,44 @@ export default function Home() {
 
           {/* CHANGE LANGUAGE */}
           <div className="header-right">
-
             <button
               type="button"
               className="change-language"
-              onClick={() =>
-                setLanguage(null)
-              }
+              onClick={() => setLanguage(null)}
             >
               {t.back}
             </button>
-
           </div>
-
         </div>
-
       </header>
 
-      {/* =================================================
-          MENU INTRO
-      ================================================= */}
-
+      {/* MENU INTRO */}
       <section className="menu-intro">
-
         <div className="intro-line" />
-
-        <h1>
-          {t.menu}
-        </h1>
-
+        <h1>{t.menu}</h1>
       </section>
 
-      {/* =================================================
-          CATEGORY NAVIGATION
-      ================================================= */}
-
-      <nav
-        className="category-scroll"
-        aria-label="Menu categories"
-      >
-
+      {/* CATEGORY NAVIGATION */}
+      <nav className="category-scroll" aria-label="Menu categories">
         {categories.map((item) => {
-
           let label = "";
 
           switch (item.id) {
-
             case "sandwiches":
               label = t.sandwiches;
               break;
-
             case "cold-drinks":
               label = t.coldDrinks;
               break;
-
             case "salads":
               label = t.salads;
               break;
-
             case "desserts":
               label = t.desserts;
               break;
-
             case "hot-drinks":
               label = t.hotDrinks;
               break;
-
           }
 
           return (
@@ -560,100 +501,50 @@ export default function Home() {
               key={item.id}
               type="button"
               className={`category-btn ${
-                category === item.id
-                  ? "active"
-                  : ""
+                category === item.id ? "active" : ""
               }`}
-              onClick={() =>
-                setCategory(item.id)
-              }
+              onClick={() => setCategory(item.id)}
             >
-
-              <span>
-                {item.icon}
-              </span>
-
-              <b>
-                {label}
-              </b>
-
+              <span>{item.icon}</span>
+              <b>{label}</b>
             </button>
           );
-
         })}
-
       </nav>
 
-      {/* =================================================
-          MENU ITEMS
-      ================================================= */}
-
+      {/* MENU ITEMS */}
       <section className="items-section">
-
         {visibleItems.length > 0 ? (
-
           <div className="items-grid">
-
             {visibleItems.map((item) => (
-
-              <article
-                className="item-card"
-                key={item.name}
-              >
-
+              <article className="item-card" key={item.name}>
                 {/* ITEM IMAGE */}
                 <div className="item-image-wrap">
-
                   {item.image ? (
-
                     <Image
                       src={`/images/${item.image}`}
-                      alt={
-                        rtl
-                          ? item.arName
-                          : item.name
-                      }
+                      alt={rtl ? item.arName : item.name}
                       fill
                       sizes="(max-width: 680px) 92vw, 420px"
                       className="item-image"
                     />
-
                   ) : (
-
                     <div className="image-placeholder" />
-
                   )}
-
                 </div>
 
                 {/* ITEM DETAILS */}
                 <div className="item-body">
-
                   <div className="item-top">
-
-                    <h2>
-                      {rtl
-                        ? item.arName
-                        : item.name}
-                    </h2>
+                    <h2>{rtl ? item.arName : item.name}</h2>
 
                     <span className="price">
-
                       {item.price}
-
-                      <small>
-                        {t.currency}
-                      </small>
-
+                      <small>{t.currency}</small>
                     </span>
-
                   </div>
 
-                  <p>
-                    {rtl
-                      ? item.arDesc
-                      : item.description}
-                  </p>
+                  <p>{rtl ? item.arDesc : item.description}</p>
 
                   <button
                     type="button"
@@ -662,69 +553,59 @@ export default function Home() {
                   >
                     {t.addToCart}
                   </button>
-
                 </div>
-
               </article>
-
             ))}
-
           </div>
-
         ) : (
-
           <div className="coming-soon">
-
-            <span>
-              ☕
-            </span>
-
-            <h2>
-              {t.soon}
-            </h2>
-
+            <span>☕</span>
+            <h2>{t.soon}</h2>
             <p>
               {rtl
                 ? "سيتم إضافة هذه الفئة قريباً."
                 : "This category will be added soon."}
             </p>
-
           </div>
-
         )}
-
       </section>
 
-      {/* =================================================
-          MENU FOOTER
-
-          LinQafé ABOVE Scan • Browse • Enjoy
-      ================================================= */}
-
+      {/* MENU FOOTER */}
       <footer className="menu-footer">
-
-        <strong>
-          LinQafé
-        </strong>
-
-        <span>
-          {t.qr}
-        </span>
-
+        <strong>LinQafé</strong>
+        <span>{t.qr}</span>
       </footer>
 
+      {/* FLOATING CART BUTTON */}
       {cartCount > 0 && !cartOpen && (
-        <button type="button" className="cart-floating" onClick={() => setCartOpen(true)}>
+        <button
+          type="button"
+          className="cart-floating"
+          onClick={() => setCartOpen(true)}
+        >
           🛒 {t.cart} <span className="cart-count">{cartCount}</span>
         </button>
       )}
 
+      {/* CART OVERLAY */}
       {cartOpen && (
-        <div className="cart-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) setCartOpen(false); }}>
+        <div
+          className="cart-overlay"
+          onMouseDown={(e) => {
+            if (e.target === e.currentTarget) setCartOpen(false);
+          }}
+        >
           <aside className="cart-panel" aria-label={t.cart}>
             <div className="cart-head">
               <h2>{paymentMessage || t.cart}</h2>
-              <button type="button" className="cart-close" onClick={() => setCartOpen(false)}>×</button>
+
+              <button
+                type="button"
+                className="cart-close"
+                onClick={() => setCartOpen(false)}
+              >
+                ×
+              </button>
             </div>
 
             {paymentMessage ? (
@@ -732,41 +613,155 @@ export default function Home() {
                 <div style={{ fontSize: 48 }}>✓</div>
                 <h3>{t.orderReceived}</h3>
                 <p>{paymentMessage}</p>
-                <button className="checkout-btn" onClick={() => { setPaymentMessage(""); setCartOpen(false); }}>Back to Menu</button>
+
+                <button
+                  className="checkout-btn"
+                  onClick={() => {
+                    setPaymentMessage("");
+                    setCartOpen(false);
+                  }}
+                >
+                  Back to Menu
+                </button>
               </div>
             ) : !checkoutOpen ? (
               cart.length ? (
                 <>
                   {cart.map((item) => (
                     <div className="cart-item" key={item.name}>
-                      <Image src={`/images/${item.image}`} alt={rtl ? item.arName : item.name} width={82} height={82} />
+                      <Image
+                        src={`/images/${item.image}`}
+                        alt={rtl ? item.arName : item.name}
+                        width={82}
+                        height={82}
+                      />
+
                       <div>
                         <h3>{rtl ? item.arName : item.name}</h3>
-                        <p>{item.price} {t.currency}</p>
+                        <p>
+                          {item.price} {t.currency}
+                        </p>
+
                         <div className="qty">
-                          <button onClick={() => changeQuantity(item.name, -1)}>-</button>
+                          <button
+                            onClick={() =>
+                              changeQuantity(item.name, -1)
+                            }
+                          >
+                            -
+                          </button>
+
                           <b>{item.quantity}</b>
-                          <button onClick={() => changeQuantity(item.name, 1)}>+</button>
+
+                          <button
+                            onClick={() =>
+                              changeQuantity(item.name, 1)
+                            }
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
-                      <div className="cart-item-total">{(item.price * item.quantity).toFixed(2)} {t.currency}</div>
+
+                      <div className="cart-item-total">
+                        {(item.price * item.quantity).toFixed(2)}{" "}
+                        {t.currency}
+                      </div>
                     </div>
                   ))}
+
                   <div className="cart-summary">
-                    <div className="cart-total"><span>{t.total}</span><span>{cartTotal.toFixed(2)} {t.currency}</span></div>
-                    <button type="button" className="checkout-btn" onClick={startCheckout}>{t.checkout}</button>
+                    <div className="cart-total">
+                      <span>{t.total}</span>
+                      <span>
+                        {cartTotal.toFixed(2)} {t.currency}
+                      </span>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="checkout-btn"
+                      onClick={startCheckout}
+                    >
+                      {t.checkout}
+                    </button>
                   </div>
                 </>
-              ) : <div className="empty-cart"><h3>{t.emptyCart}</h3></div>
+              ) : (
+                <div className="empty-cart">
+                  <h3>{t.emptyCart}</h3>
+                </div>
+              )
             ) : (
               <form className="checkout-form" onSubmit={placeOrder}>
-                <button type="button" className="checkout-back" onClick={() => setCheckoutOpen(false)}>← {t.backToCart}</button>
-                {cart.map(item => <div className="cart-item" key={item.name}><Image src={`/images/${item.image}`} alt="" width={64} height={64}/><div><h3>{rtl ? item.arName : item.name}</h3><p>{item.quantity} × {item.price} {t.currency}</p></div></div>)}
-                <input required value={customerName} onChange={e=>setCustomerName(e.target.value)} placeholder={t.customerName}/>
-                <input required value={customerPhone} onChange={e=>setCustomerPhone(e.target.value)} placeholder={t.phone} inputMode="tel"/>
-                <select value={orderType} onChange={e=>setOrderType(e.target.value as "pickup" | "dine-in")}><option value="pickup">{t.pickup}</option><option value="dine-in">{t.dineIn}</option></select>
-                {orderType === "dine-in" && <input required value={tableNumber} onChange={e=>setTableNumber(e.target.value)} placeholder={t.table}/>}
-                <textarea value={notes} onChange={e=>setNotes(e.target.value)} placeholder={t.notes}/>
+                <button
+                  type="button"
+                  className="checkout-back"
+                  onClick={() => setCheckoutOpen(false)}
+                >
+                  ← {t.backToCart}
+                </button>
+
+                {cart.map((item) => (
+                  <div className="cart-item" key={item.name}>
+                    <Image
+                      src={`/images/${item.image}`}
+                      alt=""
+                      width={64}
+                      height={64}
+                    />
+
+                    <div>
+                      <h3>{rtl ? item.arName : item.name}</h3>
+                      <p>
+                        {item.quantity} × {item.price} {t.currency}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+
+                <input
+                  required
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  placeholder={t.customerName}
+                />
+
+                <input
+                  required
+                  value={customerPhone}
+                  onChange={(e) => setCustomerPhone(e.target.value)}
+                  placeholder={t.phone}
+                  inputMode="tel"
+                />
+
+                <select
+                  value={orderType}
+                  onChange={(e) =>
+                    setOrderType(
+                      e.target.value as "pickup" | "dine-in"
+                    )
+                  }
+                >
+                  <option value="pickup">{t.pickup}</option>
+                  <option value="dine-in">{t.dineIn}</option>
+                </select>
+
+                {orderType === "dine-in" && (
+                  <input
+                    required
+                    value={tableNumber}
+                    onChange={(e) => setTableNumber(e.target.value)}
+                    placeholder={t.table}
+                  />
+                )}
+
+                <textarea
+                  value={notes}
+                  onChange={(e) => setNotes(e.target.value)}
+                  placeholder={t.notes}
+                />
+
                 <div className="cart-total">
                   <span>{t.total}</span>
                   <span>
@@ -774,6 +769,7 @@ export default function Home() {
                   </span>
                 </div>
 
+                {/* PAYMENT METHOD */}
                 <div className="payment-method-section">
                   <p className="payment-method-title">
                     {t.paymentMethod}
@@ -791,6 +787,7 @@ export default function Home() {
                       checked={paymentMethod === "online"}
                       onChange={() => setPaymentMethod("online")}
                     />
+
                     <span>💳 Apple Pay / Card</span>
                   </label>
 
@@ -806,6 +803,7 @@ export default function Home() {
                       checked={paymentMethod === "cash"}
                       onChange={() => setPaymentMethod("cash")}
                     />
+
                     <span>💵 {t.cash}</span>
                   </label>
                 </div>
@@ -828,9 +826,9 @@ export default function Home() {
 
                 {paymentMethod === "online" && (
                   <p className="cart-note">
-                    Apple Pay and other payment methods are shown on the secure
-                    Tap checkout when enabled for the LinQafé merchant
-                    account.
+                    Apple Pay and other payment methods are shown on the
+                    secure Tap checkout when enabled for the LinQafé
+                    merchant account.
                   </p>
                 )}
               </form>
@@ -838,7 +836,6 @@ export default function Home() {
           </aside>
         </div>
       )}
-
     </main>
   );
 }
