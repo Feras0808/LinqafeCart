@@ -1,614 +1,725 @@
+
 export const menuItems = [
- {
-  name: "Spanish Latte",
-  arName: "سبانيش لاتيه",
-  arDesc: "إسبريسو غني مع حليب كريمي وحليب مكثف محلى",
-  description: "Rich espresso, creamy milk, and sweet condensed milk",
-  price: 24,
-  image: "spanish-latte.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Espresso",
-  arName: "إسبريسو",
-  arDesc: "جرعة إسبريسو غنية ومركزة",
-  description: "Rich and intense espresso shot",
-  price: 14,
-  image: "espresso.png",
-  category: "hot-drinks"
-},
-{
-  name: "Turkish Coffee",
-  arName: "قهوة تركية",
-  arDesc: "قهوة تركية تقليدية بقوام غني ونكهة عطرية مميزة",
-  description: "Traditional Turkish coffee with a rich, aromatic body",
-  price: 15,
-  image: "turkish-coffee.png",
-  category: "hot-drinks"
-},
-{
-  name: "Americano",
-  arName: "أمريكانو",
-  arDesc: "إسبريسو مع ماء ساخن لمذاق متوازن وسلس",
-  description: "Espresso topped with hot water for a smooth, balanced cup",
-  price: 16,
-  image: "americano.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Cappuccino",
-  arName: "كابتشينو",
-  arDesc: "إسبريسو مع حليب مبخر وطبقة كريمية من الرغوة",
-  description: "Espresso with steamed milk and a creamy layer of foam",
-  price: 22,
-  image: "cappuccino.png",
-  category: "hot-drinks"
-},
-{
-  name: "Latte",
-  arName: "لاتيه",
-  arDesc: "إسبريسو ناعم ممزوج بحليب مبخر ورغوة خفيفة",
-  description: "Smooth espresso blended with steamed milk and a light foam",
-  price: 22,
-  image: "latte.png",
-  category: "hot-drinks"
-},
-{
-  name: "Flat White",
-  arName: "فلات وايت",
-  arDesc: "إسبريسو غني مع حليب مبخر ناعم وكريمي",
-  description: "Velvety espresso with silky steamed milk",
-  price: 22,
-  image: "flat-white.png",
-  category: "hot-drinks"
-},
-{
-  name: "Mocha",
-  arName: "موكا",
-  arDesc: "إسبريسو مع شوكولاتة غنية وحليب مبخر",
-  description: "Espresso with rich chocolate and steamed milk",
-  price: 22,
-  image: "mocha.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Macchiato",
-  arName: "ماكياتو",
-  arDesc: "إسبريسو مع لمسة من الحليب المبخر",
-  description: "Espresso marked with a touch of steamed milk",
-  price: 20,
-  image: "macchiato.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Affogato",
-  arName: "أفوجاتو",
-  arDesc: "إسبريسو غني يقدم فوق آيس كريم الفانيلا الكريمي",
-  description: "Espresso poured over creamy vanilla ice cream",
-  price: 25,
-  image: "affogato.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Cortado",
-  arName: "كورتادو",
-  arDesc: "إسبريسو متوازن مع حليب مبخر دافئ",
-  description: "Espresso balanced with warm steamed milk",
-  price: 20,
-  image: "cortado.jpg",
-  category: "hot-drinks"
-},
-{
-  name: "Matcha",
-  arName: "ماتشا",
-  arDesc: "ماتشا يابانية ناعمة محضرة مع حليب كريمي",
-  description: "Smooth Japanese matcha prepared with creamy milk",
-  price: 25,
-  image: "matcha.png",
-  category: "hot-drinks"
-},
-{
-  name: "V60",
-  arName: "V60",
-  arDesc: "قهوة مختصة محضرة يدوياً باستخدام أداة V60",
-  description: "Hand-brewed specialty coffee prepared with a V60 dripper",
-  price: 23,
-  image: "v60.png",
-  category: "hot-drinks"
-},
-{
-  name: "Chemex",
-  arName: "كيمكس",
-  arDesc: "قهوة مقطرة يدوياً بنكهة نقية وعطرية محضرة باستخدام الكيمكس",
-  description: "Clean and aromatic hand-brewed coffee prepared with a Chemex",
-  price: 27,
-  image: "chemex.png",
-  category: "hot-drinks"
-},
-{
-  name: "Morrocan Tea",
-  arName: "شاي مغربي",
-  arDesc: "شاي مغربي تقليدي بنكهة منعشة وعطرية",
-  description: "Traditional Moroccan tea with a refreshing aromatic character",
-  price: 12,
-  image: "moroccan-tea.png",
-  category: "hot-drinks"
-},
-{
-  name: "Earl Grey Tea",
-  arName: "شاي إيرل غراي",
-  arDesc: "شاي أسود كلاسيكي بنكهة البرغموت العطرية",
-  description: "Classic black tea infused with bergamot",
-  price: 12,
-  image: "earl-grey-tea.png",
-  category: "hot-drinks"
-},
-{
-  name: "Chamomile Tea",
-  arName: "شاي البابونج",
-  arDesc: "شاي بابونج ناعم وهادئ بنكهة لطيفة",
-  description: "Gentle and soothing chamomile tea",
-  price: 12,
-  image: "chamomile-tea.png",
-  category: "hot-drinks"
-},
-{
-  name: "Orange Juice",
-  arName: "عصير برتقال",
-  arDesc: "عصير برتقال طازج ومنعش",
-  description: "Fresh and refreshing orange juice",
-  price: 18,
-  image: "orange-juice.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Mojito",
-  arName: "موهيتو",
-  arDesc: "مشروب منعش بالنعناع والحمضيات يقدم بارداً",
-  description: "Refreshing mint and citrus drink served chilled",
-  price: 26,
-  image: "mojito.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Passion Fruit Soda",
-  arName: "صودا باشن فروت",
-  arDesc: "صودا باشن فروت فوارة ومنعشة تقدم مع الثلج",
-  description: "Sparkling passion fruit soda served over ice",
-  price: 26,
-  image: "passion-fruit-soda.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Berry Soda",
-  arName: "صودا التوت",
-  arDesc: "صودا التوت الفوارة والمنعشة تقدم مع الثلج",
-  description: "Refreshing sparkling berry soda served over ice",
-  price: 26,
-  image: "berry-soda.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Lemonade",
-  arName: "ليمونادة",
-  arDesc: "ليمونادة منعشة وباردة بنكهة حمضيات مشرقة",
-  description: "Refreshing chilled lemonade with a bright citrus flavor",
-  price: 26,
-  image: "lemonade.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "LinQafe Signature",
-  arName: "لينقافيه سيغنتشر",
-  arDesc: "مشروب لينقافيه المميز والمنعش يقدم بارداً",
-  description: "LinQafe signature chilled specialty drink",
-  price: 28,
-  image: "linqafe-signature.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Spanish Latte",
-  arName: "سبانيش لاتيه",
-  arDesc: "إسبريسو بارد مع حليب كريمي ونكهة حلوة",
-  description: "Chilled espresso with creamy milk and sweetened flavor",
-  price: 24,
-  image: "Iced Spanish latte.JPG",
-  category: "cold-drinks"
-},
-{
-  name: "Pistachio Latte",
-  arName: "لاتيه بالفستق",
-  arDesc: "لاتيه بارد بنكهة الفستق الكريمية",
-  description: "Iced latte with creamy pistachio flavor",
-  price: 25,
-  image: "pistachio-latte.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Rose Latte",
-  arName: "لاتيه بالورد",
-  arDesc: "لاتيه بارد بنكهة الورد الرقيقة",
-  description: "Iced latte with a delicate rose flavor",
-  price: 25,
-  image: "rose-latte.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Iced Vanilla Latte",
-  arName: "آيس فانيلا لاتيه",
-  arDesc: "لاتيه بارد بنكهة الفانيلا الناعمة",
-  description: "Iced latte with smooth vanilla flavor",
-  price: 24,
-  image: "iced-vanilla-latte.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Tiramisu Latte",
-  arName: "تيراميسو لاتيه",
-  arDesc: "لاتيه بارد مستوحى من نكهات التيراميسو الغنية",
-  description: "Iced latte inspired by the rich flavors of tiramisu",
-  price: 25,
-  image: "tiramisu-latte.jpg",
-  category: "cold-drinks"
-},
-{
-  name: "Iced Americano",
-  arName: "آيس أمريكانو",
-  arDesc: "إسبريسو وماء بارد يقدمان مع الثلج",
-  description: "Chilled espresso and water served over ice",
-  price: 16,
-  image: "iced-americano.png",
-  category: "cold-drinks"
-},
-{
-  name: "Iced V60",
-  arName: "آيس V60",
-  arDesc: "قهوة V60 محضرة يدوياً وتقدم باردة مع الثلج",
-  description: "Hand-brewed V60 coffee served chilled over ice",
-  price: 23,
-  image: "iced-v60.png",
-  category: "cold-drinks"
-},
-{
-  name: "Iced Chemex",
-  arName: "آيس كيمكس",
-  arDesc: "قهوة كيمكس نقية وعطرية تقدم باردة مع الثلج",
-  description: "Clean and aromatic Chemex coffee served chilled over ice",
-  price: 27,
-  image: "iced-chemex.png",
-  category: "cold-drinks"
-},
-{
-  name: "Iced Latte",
-  arName: "آيس لاتيه",
-  arDesc: "إسبريسو وحليب بارد يقدمان مع الثلج",
-  description: "Espresso and chilled milk served over ice",
-  price: 22,
-  image: "iced-latte.png",
-  category: "cold-drinks"
-},
-{
-  name: "Iced Mocha",
-  arName: "آيس موكا",
-  arDesc: "إسبريسو بارد مع الحليب والشوكولاتة ويعلوه مسحوق الكاكاو",
-  description: "Iced espresso, milk and chocolate topped with cocoa powder",
-  price: 22,
-  image: "iced-mocha.png",
-  category: "cold-drinks"
-},
+  // ==========================================
+  // HOT DRINKS
+  // ==========================================
   {
-    "name": "Butter Croissant",
-    "arName": "كرواسون بالزبدة",
-    "arDesc": "كرواسون فرنسي هش مصنوع بالكامل من الزبدة",
-    "description": "Classic flaky all-butter French croissant",
-    "price": 16,
-    "image": "butter-croissant.webp",
-    "category": "desserts"
+    name: "Spanish Latte",
+    arName: "سبانيش لاتيه",
+    description: "Rich espresso, creamy milk, and sweet condensed milk",
+    arDesc: "إسبريسو غني مع حليب كريمي وحليب مكثف محلى",
+    price: 24,
+    image: "spanish-latte.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Chocolate Croissant",
-    "arName": "كرواسون بالشوكولاتة",
-    "arDesc": "كرواسون هش محشو بالشوكولاتة الغنية",
-    "description": "Flaky croissant filled with rich chocolate",
-    "price": 20,
-    "image": "chocolate-croissant.webp",
-    "category": "desserts"
+    name: "Espresso",
+    arName: "إسبريسو",
+    description: "Rich and intense espresso shot",
+    arDesc: "جرعة إسبريسو غنية ومركزة بنكهة قهوة قوية",
+    price: 14,
+    image: "espresso.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Cheese Croissant",
-    "arName": "كرواسون بالجبنة",
-    "arDesc": "كرواسون بالزبدة محشو بجبنة سويسرية",
-    "description": "Buttery croissant filled with Swiss cheese",
-    "price": 22,
-    "image": "cheese-croissant.webp",
-    "category": "desserts"
+    name: "Turkish Coffee",
+    arName: "قهوة تركية",
+    description: "Traditional Turkish coffee with a rich, aromatic body",
+    arDesc: "قهوة تركية تقليدية بقوام غني ونكهة عطرية مميزة",
+    price: 15,
+    image: "turkish-coffee.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Almond Croissant",
-    "arName": "كرواسون باللوز",
-    "arDesc": "كرواسون محشو ومغطى بشرائح اللوز",
-    "description": "Croissant filled and topped with almond slices",
-    "price": 24,
-    "image": "almond-croissant.webp",
-    "category": "desserts"
+    name: "Americano",
+    arName: "أمريكانو",
+    description: "Espresso topped with hot water for a smooth, balanced cup",
+    arDesc: "إسبريسو مع ماء ساخن لمذاق متوازن وسلس",
+    price: 16,
+    image: "americano.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Pecan Pie",
-    "arName": "فطيرة البيكان",
-    "arDesc": "فطيرة البيكان الكلاسيكية بحشوة كراميل غنية",
-    "description": "Classic pecan pie with a rich caramelized filling",
-    "price": 26,
-    "image": "pecan-pie.webp",
-    "category": "desserts"
+    name: "Cappuccino",
+    arName: "كابتشينو",
+    description: "Espresso with steamed milk and a creamy layer of foam",
+    arDesc: "إسبريسو مع حليب مبخر وطبقة كريمية من رغوة الحليب",
+    price: 22,
+    image: "cappuccino.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Apple Pie",
-    "arName": "فطيرة التفاح",
-    "arDesc": "فطيرة تفاح تقليدية بالتفاح والقرفة",
-    "description": "Traditional apple pie with cinnamon-spiced apples",
-    "price": 22,
-    "image": "apple-pie.webp",
-    "category": "desserts"
+    name: "Latte",
+    arName: "لاتيه",
+    description: "Smooth espresso blended with steamed milk and a light foam",
+    arDesc: "إسبريسو ناعم ممزوج بحليب مبخر ورغوة خفيفة",
+    price: 22,
+    image: "latte.png",
+    category: "hot-drinks"
   },
   {
-    "name": "English Cake",
-    "arName": "كيكة إنجليزية",
-    "arDesc": "كيك إنجليزي طري وغني",
-    "description": "Moist English-style loaf cake",
-    "price": 10,
-    "image": "english-cake.webp",
-    "category": "desserts"
+    name: "Flat White",
+    arName: "فلات وايت",
+    description: "Velvety espresso with silky steamed milk",
+    arDesc: "إسبريسو غني مع حليب مبخر ناعم بقوام مخملي",
+    price: 22,
+    image: "flat-white.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Blueberry Muffin",
-    "arName": "مافن بالتوت الأزرق",
-    "arDesc": "مافن طري محشو بالتوت الأزرق",
-    "description": "Soft muffin loaded with blueberries",
-    "price": 15,
-    "image": "blueberry-muffin.webp",
-    "category": "desserts"
+    name: "Mocha",
+    arName: "موكا",
+    description: "Espresso with rich chocolate and steamed milk",
+    arDesc: "إسبريسو ممزوج بالشوكولاتة الغنية والحليب المبخر",
+    price: 22,
+    image: "mocha.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Oatmeal Cookie",
-    "arName": "كوكيز الشوفان",
-    "arDesc": "كوكيز الشوفان المخبوز طازجاً",
-    "description": "Freshly baked oatmeal cookie",
-    "price": 11,
-    "image": "oatmeal-cookies.webp",
-    "category": "desserts"
+    name: "Macchiato",
+    arName: "ماكياتو",
+    description: "Espresso marked with a touch of steamed milk",
+    arDesc: "إسبريسو مركز مع لمسة خفيفة من الحليب المبخر",
+    price: 20,
+    image: "macchiato.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Lemon Meringue Tart",
-    "arName": "تارت الليمون والميرينغ",
-    "arDesc": "تارت الليمون المنعش مع طبقة ميرينغ خفيفة",
-    "description": "Tangy lemon tart topped with fluffy meringue",
-    "price": 23,
-    "image": "lemon-meringue-tart.webp",
-    "category": "desserts"
+    name: "Affogato",
+    arName: "أفوجاتو",
+    description: "Espresso poured over creamy vanilla ice cream",
+    arDesc: "إسبريسو غني يقدم فوق آيس كريم الفانيلا الكريمي",
+    price: 25,
+    image: "affogato.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Lotus Cheesecake",
-    "arName": "تشيز كيك لوتس",
-    "arDesc": "تشيزكيك كريمي مع طبقة بسكويت اللوتس",
-    "description": "Creamy cheesecake with Lotus biscuit topping",
-    "price": 37,
-    "image": "lotus-cheesecake.webp",
-    "category": "desserts"
+    name: "Cortado",
+    arName: "كورتادو",
+    description: "Espresso balanced with warm steamed milk",
+    arDesc: "إسبريسو متوازن مع حليب مبخر دافئ",
+    price: 20,
+    image: "cortado.jpg",
+    category: "hot-drinks"
   },
   {
-    "name": "Blueberry Cheesecake",
-    "arName": "تشيز كيك بالتوت الأزرق",
-    "arDesc": "تشيزكيك كريمي مغطى بالتوت الأزرق",
-    "description": "Creamy cheesecake topped with blueberries",
-    "price": 37,
-    "image": "blueberry-cheesecake.webp",
-    "category": "desserts"
+    name: "Matcha",
+    arName: "ماتشا",
+    description: "Smooth Japanese matcha prepared with creamy milk",
+    arDesc: "شاي ماتشا ياباني ناعم محضر مع حليب كريمي",
+    price: 25,
+    image: "matcha.png",
+    category: "hot-drinks"
   },
   {
-    "name": "San Sebastian Cheesecake",
-    "arName": "تشيز كيك سان سيباستيان",
-    "arDesc": "تشيزكيك سان سيباستيان المخبوزة على الطريقة الباسكية",
-    "description": "Burnt Basque-style San Sebastian cheesecake",
-    "price": 31,
-    "image": "san-sebastian.webp",
-    "category": "desserts"
+    name: "V60",
+    arName: "قهوة V60",
+    description: "Hand-brewed specialty coffee prepared with a V60 dripper",
+    arDesc: "قهوة مختصة محضرة يدوياً باستخدام أداة الترشيح V60",
+    price: 23,
+    image: "v60.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Tiramisu",
-    "arName": "تيراميسو",
-    "arDesc": "أصابع البسكويت المغموسة بالإسبريسو مع طبقات من جبنة الماسكاربوني",
-    "description": "Ladyfingers soaked with espresso and layered with mascarpone cheese",
-    "price": 40,
-    "image": "tiramisu.webp",
-    "category": "desserts"
+    name: "Chemex",
+    arName: "كيمكس",
+    description: "Clean and aromatic hand-brewed coffee prepared with a Chemex",
+    arDesc: "قهوة مقطرة يدوياً باستخدام الكيمكس بنكهة نقية وعطرية",
+    price: 27,
+    image: "chemex.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Pistachio Cheesecake",
-    "arName": "تشيز كيك بالفستق",
-    "arDesc": "تشيز كيك كريمي غني بالفستق مع لمسة مقرمشة",
-    "description": "Creamy pistachio cheesecake with a delicate pistachio crunch",
-    "price": 28,
-    "image": "pistachio-cheesecake.webp",
-    "category": "desserts"
+    name: "Morrocan Tea",
+    arName: "شاي مغربي",
+    description: "Traditional Moroccan tea with a refreshing aromatic character",
+    arDesc: "شاي مغربي تقليدي بنكهة عطرية منعشة ومميزة",
+    price: 12,
+    image: "moroccan-tea.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Vanilla & Chocolate Mousse Cake",
-    "arName": "كيكة موس الفانيلا والشوكولاتة",
-    "arDesc": "كيكة شوكولاتة فالرونا مع موس الفانيلا الغني",
-    "description": "Valrhona chocolate cake with luscious vanilla bean mousse",
-    "price": 25,
-    "image": "vanilla-mousse-chocolate-cake.webp",
-    "category": "desserts"
+    name: "Earl Grey Tea",
+    arName: "شاي إيرل غراي",
+    description: "Classic black tea infused with bergamot",
+    arDesc: "شاي أسود كلاسيكي بنكهة البرغموت العطرية",
+    price: 12,
+    image: "earl-grey-tea.png",
+    category: "hot-drinks"
   },
   {
-    "name": "Strawberry Tart",
-    "arName": "تارت الفراولة",
-    "arDesc": "تارت زبداني محشو بكريمة ناعمة وفراولة طازجة",
-    "description": "Buttery tart filled with smooth cream and fresh strawberries",
-    "price": 21,
-    "image": "strawberry-tart.webp",
-    "category": "desserts"
+    name: "Chamomile Tea",
+    arName: "شاي البابونج",
+    description: "Gentle and soothing chamomile tea",
+    arDesc: "شاي البابونج بنكهة زهرية لطيفة ومذاق هادئ",
+    price: 12,
+    image: "chamomile-tea.png",
+    category: "hot-drinks"
+  },
+
+  // ==========================================
+  // COLD DRINKS
+  // ==========================================
+  {
+    name: "Orange Juice",
+    arName: "عصير برتقال",
+    description: "Fresh and refreshing orange juice",
+    arDesc: "عصير برتقال طازج بمذاق طبيعي ومنعش",
+    price: 18,
+    image: "orange-juice.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Apple Cake",
-    "arName": "كيكة التفاح",
-    "arDesc": "كيكة منزلية دافئة بالتفاح والقرفة",
-    "description": "Warm apple and cinnamon spiced homemade cake",
-    "price": 19,
-    "image": "apple-cake.webp",
-    "category": "desserts"
+    name: "Mojito",
+    arName: "موهيتو",
+    description: "Refreshing mint and citrus drink served chilled",
+    arDesc: "مشروب بارد ومنعش بمزيج النعناع والحمضيات",
+    price: 26,
+    image: "mojito.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Carrot Cake",
-    "arName": "كيكة الجزر",
-    "arDesc": "كيكة جزر طرية مع الجوز ولمسة من القرفة",
-    "description": "Moist carrot cake with walnuts and warm cinnamon",
-    "price": 16,
-    "image": "carrot-cake-new.webp",
-    "category": "desserts"
+    name: "Passion Fruit Soda",
+    arName: "صودا باشن فروت",
+    description: "Sparkling passion fruit soda served over ice",
+    arDesc: "مشروب صودا فوار بنكهة فاكهة الباشن فروت يقدم مع الثلج",
+    price: 26,
+    image: "passion-fruit-soda.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Healthy Brownie",
-    "arName": "براوني صحي",
-    "arDesc": "براوني شوكولاتة صحي بدقيق الشوفان والزبادي اليوناني والعسل",
-    "description": "Healthy chocolate brownie made with oat flour, Greek yogurt and honey",
-    "price": 16,
-    "image": "healthy-brownie.webp",
-    "category": "desserts"
+    name: "Berry Soda",
+    arName: "صودا التوت",
+    description: "Refreshing sparkling berry soda served over ice",
+    arDesc: "مشروب صودا فوار بنكهة التوت المنعشة يقدم مع الثلج",
+    price: 26,
+    image: "berry-soda.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Cookies",
-    "arName": "كوكيز",
-    "arDesc": "كوكيز بالزبدة البنية مع شوكولاتة فالرونا الفاخرة",
-    "description": "Brown butter cookie with premium Valrhona chocolate",
-    "price": 12,
-    "image": "cookies.webp",
-    "category": "desserts"
+    name: "Lemonade",
+    arName: "ليمونادة",
+    description: "Refreshing chilled lemonade with a bright citrus flavor",
+    arDesc: "ليمونادة باردة ومنعشة بنكهة الليمون الحمضية",
+    price: 26,
+    image: "lemonade.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Eclair",
-    "arName": "إكلير",
-    "arDesc": "إكلير فرنسي محشو بكريمة ناعمة ومغطى بالشوكولاتة",
-    "description": "Classic French éclair filled with smooth cream and chocolate glaze",
-    "price": 17,
-    "image": "eclair.webp",
-    "category": "desserts"
+    name: "LinQafe Signature",
+    arName: "مشروب لينقافيه المميز",
+    description: "LinQafe signature chilled specialty drink",
+    arDesc: "مشروب لينقافيه الخاص بنكهة مميزة ومنعشة يقدم بارداً",
+    price: 28,
+    image: "linqafe-signature.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Mosaic Cake",
-    "arName": "كيكة الموزاييك",
-    "arDesc": "كيكة بسكويت بالشوكولاتة مع مكسرات وطبقة شوكولاتة ناعمة",
-    "description": "Rich chocolate biscuit cake with crunchy nuts and a smooth chocolate coating",
-    "price": 18,
-    "image": "mosaic-cake.webp",
-    "category": "desserts"
+    name: "Spanish Latte",
+    arName: "آيس سبانيش لاتيه",
+    description: "Chilled espresso with creamy milk and sweetened flavor",
+    arDesc: "إسبريسو بارد ممزوج بحليب كريمي ونكهة حلوة يقدم مع الثلج",
+    price: 24,
+    image: "Iced Spanish latte.JPG",
+    category: "cold-drinks"
   },
   {
-    "name": "Granola Cups",
-    "arName": "أكواب الغرانولا",
-    "arDesc": "غرانولا مقرمشة بطبقات من الزبادي الكريمي والفواكه الطازجة",
-    "description": "Crunchy granola layered with creamy yogurt and fresh berries",
-    "price": 28,
-    "image": "granola-cups.webp",
-    "category": "desserts"
+    name: "Pistachio Latte",
+    arName: "آيس لاتيه بالفستق",
+    description: "Iced latte with creamy pistachio flavor",
+    arDesc: "لاتيه بارد بنكهة الفستق الغنية والكريمية",
+    price: 25,
+    image: "pistachio-latte.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Mini Cookie Croissant",
-    "arName": "ميني كرواسون بالكوكيز",
-    "arDesc": "كرواسون صغير محشو بعجينة كوكيز غنية بالزبدة البنية",
-    "description": "Mini croissant filled with rich brown butter cookie dough",
-    "price": 17,
-    "image": "cookie-croissant.webp",
-    "category": "desserts"
+    name: "Rose Latte",
+    arName: "آيس لاتيه بالورد",
+    description: "Iced latte with a delicate rose flavor",
+    arDesc: "لاتيه بارد بنكهة الورد العطرية والناعمة",
+    price: 25,
+    image: "rose-latte.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Olive Acma",
-    "arName": "أعما بالزيتون",
-    "arDesc": "معجنات تركية طرية بالزيتون والسمسم",
-    "description": "Soft Turkish pastry with olives and sesame",
-    "price": 15,
-    "image": "olive-acma.webp",
-    "category": "desserts"
+    name: "Iced Vanilla Latte",
+    arName: "آيس فانيلا لاتيه",
+    description: "Iced latte with smooth vanilla flavor",
+    arDesc: "لاتيه بارد مع نكهة الفانيلا الناعمة والحليب الكريمي",
+    price: 24,
+    image: "iced-vanilla-latte.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Simit",
-    "arName": "سميت",
-    "arDesc": "خبز تركي بالسمسم بحواف ذهبية مقرمشة",
-    "description": "Golden Turkish sesame bread with a crisp finish",
-    "price": 16,
-    "image": "simit.webp",
-    "category": "desserts"
+    name: "Tiramisu Latte",
+    arName: "آيس تيراميسو لاتيه",
+    description: "Iced latte inspired by the rich flavors of tiramisu",
+    arDesc: "لاتيه بارد مستوحى من نكهات حلوى التيراميسو الغنية",
+    price: 25,
+    image: "tiramisu-latte.jpg",
+    category: "cold-drinks"
   },
   {
-    "name": "Halloumi Sandwich",
-    "arName": "ساندويتش حلوم",
-    "arDesc": "ساندويتش جبنة الحلوم المشوية مع الجرجير وصلصة السويت تشيلي على خبز الساوردو",
-    "description": "Grilled halloumi, rocket and sweet chili sauce on sourdough bread",
-    "price": 39,
-    "image": "halloumi.webp",
-    "category": "sandwiches"
+    name: "Iced Americano",
+    arName: "آيس أمريكانو",
+    description: "Chilled espresso and water served over ice",
+    arDesc: "إسبريسو مع ماء بارد يقدم فوق الثلج لمذاق منعش ومتوازن",
+    price: 16,
+    image: "iced-americano.png",
+    category: "cold-drinks"
   },
   {
-    "name": "Turkey & Cheese Sandwich",
-    "arName": "ساندويتش الديك الرومي والجبن",
-    "arDesc": "ساندويتش الديك الرومي والجبن مع الريليش الحلو وخردل العسل على خبز الساوردو",
-    "description": "Turkey and cheese sandwich with sweet relish and honey mustard on sourdough bread",
-    "price": 37,
-    "image": "turkey-and-cheese.webp",
-    "category": "sandwiches"
+    name: "Iced V60",
+    arName: "آيس V60",
+    description: "Hand-brewed V60 coffee served chilled over ice",
+    arDesc: "قهوة مختصة محضرة يدوياً بطريقة V60 وتقدم باردة مع الثلج",
+    price: 23,
+    image: "iced-v60.png",
+    category: "cold-drinks"
   },
   {
-    "name": "Chili Cheese Chicken Sandwich",
-    "arName": "ساندويتش دجاج بالجبن والفلفل الحار",
-    "arDesc": "ساندويتش دجاج بالجبن والفلفل الحار على خبز التوست البني",
-    "description": "Chili cheese chicken sandwich on brown toast",
-    "price": 32,
-    "image": "chili-cheese.webp",
-    "category": "sandwiches"
+    name: "Iced Chemex",
+    arName: "آيس كيمكس",
+    description: "Clean and aromatic Chemex coffee served chilled over ice",
+    arDesc: "قهوة كيمكس مقطرة بنكهة نقية وعطرية تقدم باردة مع الثلج",
+    price: 27,
+    image: "iced-chemex.png",
+    category: "cold-drinks"
   },
   {
-    "name": "Chicken & Pesto Sandwich",
-    "arName": "ساندويتش الدجاج والبيستو",
-    "arDesc": "ساندويتش دجاج مشوي مع صلصة البيستو وأوراق الروكا على خبز الساوردو",
-    "description": "Grilled chicken sandwich with pesto sauce, rucola leaves and sourdough bread",
-    "price": 36,
-    "image": "chicken-and-pesto.webp",
-    "category": "sandwiches"
+    name: "Iced Latte",
+    arName: "آيس لاتيه",
+    description: "Espresso and chilled milk served over ice",
+    arDesc: "إسبريسو غني ممزوج بالحليب البارد ويقدم مع الثلج",
+    price: 22,
+    image: "iced-latte.png",
+    category: "cold-drinks"
   },
   {
-    "name": "Caesar Salad with Chicken",
-    "arName": "سلطة سيزر بالدجاج",
-    "arDesc": "سلطة سيزر كلاسيكية مع الدجاج المشوي وجبنة البارميزان وصلصة السيزر",
-    "description": "Classic Caesar salad with grilled chicken, parmesan and Caesar dressing",
-    "price": 35,
-    "image": "caesar-salad-with-chicken.webp",
-    "category": "salads"
+    name: "Iced Mocha",
+    arName: "آيس موكا",
+    description: "Iced espresso, milk and chocolate topped with cocoa powder",
+    arDesc: "إسبريسو بارد مع الحليب والشوكولاتة تعلوه رشة من مسحوق الكاكاو",
+    price: 22,
+    image: "iced-mocha.png",
+    category: "cold-drinks"
+  },
+
+  // ==========================================
+  // DESSERTS - CROISSANTS
+  // ==========================================
+  {
+    name: "Butter Croissant",
+    arName: "كرواسون بالزبدة",
+    description: "Classic flaky all-butter French croissant",
+    arDesc: "كرواسون فرنسي هش ومورق محضر بالزبدة الغنية",
+    price: 16,
+    image: "butter-croissant.webp",
+    category: "desserts"
   },
   {
-    "name": "Quinoa Salad",
-    "arName": "سلطة الكينوا",
-    "arDesc": "سلطة كينوا صحية مع الخضروات الطازجة وتتبيلة الحمضيات والليمون",
-    "description": "Healthy quinoa salad with fresh vegetables and lemon citrus dressing",
-    "price": 44,
-    "image": "quinoa-salad.webp",
-    "category": "salads"
+    name: "Chocolate Croissant",
+    arName: "كرواسون بالشوكولاتة",
+    description: "Flaky croissant filled with rich chocolate",
+    arDesc: "كرواسون هش ومورق محشو بالشوكولاتة الغنية",
+    price: 20,
+    image: "chocolate-croissant.webp",
+    category: "desserts"
   },
   {
-    "name": "Greek Salad",
-    "arName": "سلطة يونانية",
-    "arDesc": "سلطة يونانية تقليدية مع جبنة الفيتا وزيت الزيتون والليمون",
-    "description": "Traditional Greek salad with feta cheese, olive oil & lemon",
-    "price": 35,
-    "image": "greek-salad.webp",
-    "category": "salads"
+    name: "Cheese Croissant",
+    arName: "كرواسون بالجبنة",
+    description: "Buttery croissant filled with Swiss cheese",
+    arDesc: "كرواسون بالزبدة محشو بالجبنة السويسرية",
+    price: 22,
+    image: "cheese-croissant.webp",
+    category: "desserts"
   },
   {
-    "name": "Pasta Salad",
-    "arName": "سلطة المعكرونة",
-    "arDesc": "سلطة باستا بالكريمة والخضروات الطازجة",
-    "description": "Pasta mayo salad with vegetables",
-    "price": 23,
-    "image": "pasta-salad.webp",
-    "category": "salads"
+    name: "Almond Croissant",
+    arName: "كرواسون باللوز",
+    description: "Croissant filled and topped with almond slices",
+    arDesc: "كرواسون هش محشو باللوز ومزين بشرائح اللوز المقرمشة",
+    price: 24,
+    image: "almond-croissant.webp",
+    category: "desserts"
+  },
+  {
+    name: "Mini Cookie Croissant",
+    arName: "ميني كرواسون بالكوكيز",
+    description: "Mini croissant filled with rich brown butter cookie dough",
+    arDesc: "كرواسون صغير محشو بعجينة الكوكيز الغنية بالزبدة البنية",
+    price: 17,
+    image: "cookie-croissant.webp",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - TARTS
+  // ==========================================
+  {
+    name: "Pecan Tart",
+    arName: "تارت البيكان",
+    description: "Classic pecan tart with a rich caramelized filling",
+    arDesc: "تارت البيكان الكلاسيكي بحشوة الكراميل الغنية ومكسرات البيكان",
+    price: 26,
+    image: "DSC00916.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Strawberry Tart",
+    arName: "تارت الفراولة",
+    description: "Delicate pastry tart with a sweet strawberry filling",
+    arDesc: "تارت هش بحشوة الفراولة الحلوة ونكهتها المنعشة",
+    price: 21,
+    image: "strawberry-tart.webp",
+    category: "desserts"
+  },
+  {
+    name: "Berries Tart",
+    arName: "تارت التوت",
+    description: "Buttery tart filled with smooth cream and fresh berries",
+    arDesc: "تارت زبداني هش محشو بكريمة ناعمة ومزين بالتوت الطازج",
+    price: 28,
+    image: "DSC00910.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Lemon Meringue Tart",
+    arName: "تارت الليمون والميرينغ",
+    description: "Tangy lemon tart topped with fluffy meringue",
+    arDesc: "تارت الليمون المنعش مغطى بطبقة خفيفة وهشة من الميرينغ",
+    price: 23,
+    image: "lemon tart.png",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - PIES
+  // ==========================================
+  {
+    name: "Apple Pie",
+    arName: "فطيرة التفاح",
+    description: "Traditional apple pie with cinnamon-spiced apples",
+    arDesc: "فطيرة تفاح تقليدية محشوة بالتفاح المتبل بالقرفة",
+    price: 22,
+    image: "apple-pie.webp",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - CHEESECAKES
+  // ==========================================
+  {
+    name: "Lotus Cheesecake",
+    arName: "تشيز كيك لوتس",
+    description: "Creamy cheesecake with Lotus biscuit topping",
+    arDesc: "تشيز كيك كريمي غني مغطى ببسكويت اللوتس",
+    price: 37,
+    image: "DSC00879.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Blueberry Cheesecake",
+    arName: "تشيز كيك بالتوت الأزرق",
+    description: "Creamy cheesecake topped with blueberries",
+    arDesc: "تشيز كيك كريمي ناعم مغطى بالتوت الأزرق",
+    price: 37,
+    image: "DSC00884.JPG",
+    category: "desserts"
+  },
+  {
+    name: "San Sebastian Cheesecake",
+    arName: "تشيز كيك سان سيباستيان",
+    description: "Burnt Basque-style San Sebastian cheesecake",
+    arDesc: "تشيز كيك سان سيباستيان الكريمي المخبوز على الطريقة الباسكية بسطح محمر",
+    price: 31,
+    image: "san-sebastian.webp",
+    category: "desserts"
+  },
+  {
+    name: "Pistachio Cheesecake",
+    arName: "تشيز كيك بالفستق",
+    description: "Creamy pistachio cheesecake with a delicate pistachio crunch",
+    arDesc: "تشيز كيك كريمي بنكهة الفستق الغنية مع لمسة مقرمشة من الفستق",
+    price: 28,
+    image: "pistachio-cheesecake.webp",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - CAKES
+  // ==========================================
+  {
+    name: "English Cake",
+    arName: "كيكة إنجليزية",
+    description: "Moist English-style loaf cake",
+    arDesc: "كيكة إنجليزية تقليدية طرية بقوام غني ومذاق شهي",
+    price: 10,
+    image: "english-cake.webp",
+    category: "desserts"
+  },
+  {
+    name: "Apple Cake",
+    arName: "كيكة التفاح",
+    description: "Soft and moist apple cake with a delicate fruity flavor",
+    arDesc: "كيكة تفاح طرية وهشة بنكهة التفاح الطبيعية",
+    price: 19,
+    image: "apple-cake.webp",
+    category: "desserts"
+  },
+  {
+    name: "Carrot Cake",
+    arName: "كيكة الجزر",
+    description: "Moist carrot cake with walnuts and warm cinnamon",
+    arDesc: "كيكة جزر طرية مع الجوز ولمسة دافئة من القرفة",
+    price: 16,
+    image: "DSC00877.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Vanilla & Chocolate Mousse Cake",
+    arName: "كيكة موس الفانيلا والشوكولاتة",
+    description: "Valrhona chocolate cake with luscious vanilla bean mousse",
+    arDesc: "كيكة شوكولاتة فالرونا الفاخرة مع موس الفانيلا الغني والناعم",
+    price: 25,
+    image: "vanilla-mousse-chocolate-cake.webp",
+    category: "desserts"
+  },
+  {
+    name: "Mosaic Cake",
+    arName: "كيكة الموزاييك",
+    description: "Rich chocolate biscuit cake with crunchy nuts and a smooth chocolate coating",
+    arDesc: "كيكة بسكويت بالشوكولاتة الغنية مع المكسرات المقرمشة وطبقة شوكولاتة ناعمة",
+    price: 18,
+    image: "mosaic-cake.webp",
+    category: "desserts"
+  },
+  {
+    name: "Dates Cake",
+    arName: "كيكة التمر",
+    description: "Soft and moist date cake with a naturally rich, sweet flavor",
+    arDesc: "كيكة تمر طرية وغنية بحلاوة التمر الطبيعية",
+    price: 10,
+    image: "DSC00935.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Honey Cake",
+    arName: "كيكة العسل",
+    description: "Soft honey cake with a delicate sweetness and rich flavor",
+    arDesc: "كيكة عسل طرية بنكهة غنية وحلاوة العسل اللطيفة",
+    price: 25,
+    image: "DSC00890.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Mango Cake",
+    arName: "كيكة المانجو",
+    description: "Soft and delicate mango cake with a refreshing tropical flavor",
+    arDesc: "كيكة مانجو طرية بنكهة المانجو الاستوائية المنعشة",
+    price: 34,
+    image: "DSC00881.JPG",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - COOKIES & MUFFINS
+  // ==========================================
+  {
+    name: "Blueberry Muffin",
+    arName: "مافن بالتوت الأزرق",
+    description: "Soft muffin loaded with blueberries",
+    arDesc: "مافن طري وهش غني بحبات التوت الأزرق",
+    price: 15,
+    image: "blueberry-muffin.webp",
+    category: "desserts"
+  },
+  {
+    name: "Oatmeal Cookie",
+    arName: "كوكيز الشوفان",
+    description: "Freshly baked oatmeal cookie",
+    arDesc: "كوكيز الشوفان المخبوز طازجاً بمذاق شهي وقوام مميز",
+    price: 11,
+    image: "oatmeal-cookies.webp",
+    category: "desserts"
+  },
+  {
+    name: "Cookies",
+    arName: "كوكيز بالشوكولاتة",
+    description: "Brown butter cookie with premium Valrhona chocolate",
+    arDesc: "كوكيز بالزبدة البنية مع شوكولاتة فالرونا الفاخرة",
+    price: 12,
+    image: "cookies.webp",
+    category: "desserts"
+  },
+  {
+    name: "Healthy Brownie",
+    arName: "براوني صحي",
+    description: "Healthy chocolate brownie made with oat flour, Greek yogurt and honey",
+    arDesc: "براوني شوكولاتة محضر بدقيق الشوفان والزبادي اليوناني والعسل",
+    price: 16,
+    image: "DSC00926.JPG",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - OTHER SWEETS
+  // ==========================================
+  {
+    name: "Tiramisu",
+    arName: "تيراميسو",
+    description: "Ladyfingers soaked with espresso and layered with mascarpone cheese",
+    arDesc: "حلوى إيطالية من أصابع البسكويت المغموسة بالإسبريسو مع طبقات من جبنة الماسكاربوني الكريمية",
+    price: 40,
+    image: "tiramisu.webp",
+    category: "desserts"
+  },
+  {
+    name: "Eclair",
+    arName: "إكلير بالشوكولاتة",
+    description: "Classic French éclair filled with smooth cream and chocolate glaze",
+    arDesc: "إكلير فرنسي هش محشو بكريمة ناعمة ومغطى بطبقة من الشوكولاتة",
+    price: 17,
+    image: "DSC00928.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Granola Cups",
+    arName: "أكواب الغرانولا",
+    description: "Crunchy granola layered with creamy yogurt and fresh berries",
+    arDesc: "أكواب من الغرانولا المقرمشة مع طبقات الزبادي الكريمي والتوت الطازج",
+    price: 28,
+    image: "DSC00923.JPG",
+    category: "desserts"
+  },
+  {
+    name: "Cinnamon",
+    arName: "حلى القرفة",
+    description: "Sweet cinnamon-flavored dessert with a warm, aromatic taste",
+    arDesc: "حلوى شهية بنكهة القرفة العطرية الدافئة",
+    price: 14,
+    image: "DSC00905.JPG",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // DESSERTS - TURKISH PASTRIES
+  // ==========================================
+  {
+    name: "Olive Acma",
+    arName: "آتشما بالزيتون",
+    description: "Soft Turkish pastry with olives and sesame",
+    arDesc: "معجنات تركية طرية بالزيتون والسمسم",
+    price: 15,
+    image: "olive-acma.webp",
+    category: "desserts"
+  },
+  {
+    name: "Simit",
+    arName: "سميت تركي",
+    description: "Golden Turkish sesame bread with a crisp finish",
+    arDesc: "خبز تركي تقليدي مغطى بالسمسم بقشرة ذهبية مقرمشة",
+    price: 16,
+    image: "simit.webp",
+    category: "desserts"
+  },
+
+  // ==========================================
+  // SANDWICHES
+  // ==========================================
+  {
+    name: "Hummus Toast",
+    arName: "توست الحمص",
+    description: "Toasted bread topped with smooth, creamy hummus",
+    arDesc: "خبز توست محمص يقدم مع الحمص الكريمي الناعم",
+    price: 22,
+    image: "image00010.jpeg",
+    category: "sandwiches"
+  },
+  {
+    name: "Avocado Toast",
+    arName: "توست الأفوكادو",
+    description: "Toasted bread topped with creamy avocado",
+    arDesc: "خبز توست محمص مغطى بالأفوكادو الكريمي الطازج",
+    price: 39,
+    image: "image00001.jpeg",
+    category: "sandwiches"
+  },
+  {
+    name: "Harissa Chicken",
+    arName: "ساندويتش دجاج بالهريسة",
+    description: "Flavorful chicken sandwich with a spicy harissa seasoning",
+    arDesc: "ساندويتش دجاج متبل بالهريسة الحارة ونكهات التوابل الغنية",
+    price: 30,
+    image: "image00006.jpeg",
+    category: "sandwiches"
+  },
+  {
+    name: "Chicken & Pesto Sandwich",
+    arName: "ساندويتش الدجاج والبيستو",
+    description: "Grilled chicken sandwich with pesto sauce, rucola leaves and sourdough bread",
+    arDesc: "ساندويتش دجاج مشوي مع صلصة البيستو وأوراق الجرجير على خبز الساوردو",
+    price: 36,
+    image: "chicken-and-pesto.webp",
+    category: "sandwiches"
+  },
+  {
+    name: "Roasted Bill Paper",
+    arName: "ساندويتش الفلفل المشوي",
+    description: "Roasted bell pepper sandwich with a rich, savory flavor",
+    arDesc: "ساندويتش بالفلفل الرومي المشوي بنكهة غنية وشهية",
+    price: 28,
+    image: "image00013.jpeg",
+    category: "sandwiches"
+  },
+  {
+    name: "Turkey Swiss Cheese",
+    arName: "ساندويتش الديك الرومي والجبنة السويسرية",
+    description: "Turkey sandwich with rich and creamy Swiss cheese",
+    arDesc: "ساندويتش شرائح الديك الرومي مع الجبنة السويسرية الغنية",
+    price: 32,
+    image: "image00015.jpeg",
+    category: "sandwiches"
+  },
+  {
+    name: "Beef Bagels",
+    arName: "بيغل باللحم البقري",
+    description: "Soft bagel sandwich filled with savory beef",
+    arDesc: "خبز بيغل طري محشو باللحم البقري الشهي",
+    price: 36,
+    image: "image00017.jpeg",
+    category: "sandwiches"
+  },
+
+  // ==========================================
+  // SALADS
+  // ==========================================
+  {
+    name: "Caesar Salad with Chicken",
+    arName: "سلطة سيزر بالدجاج",
+    description: "Classic Caesar salad with grilled chicken, parmesan and Caesar dressing",
+    arDesc: "سلطة سيزر كلاسيكية مع الدجاج المشوي وجبنة البارميزان وصلصة السيزر",
+    price: 34,
+    image: "image00020.jpeg",
+    category: "salads"
+  },
+  {
+    name: "Chick Peas Salad",
+    arName: "سلطة الحمص",
+    description: "Fresh chickpea salad with a light, refreshing flavor",
+    arDesc: "سلطة حمص طازجة بمذاق خفيف ومنعش",
+    price: 23,
+    image: "image00018.jpeg",
+    category: "salads"
+  },
+  {
+    name: "Lentil Green Salad",
+    arName: "سلطة العدس الأخضر",
+    description: "Fresh green lentil salad with a wholesome, satisfying flavor",
+    arDesc: "سلطة العدس الأخضر الطازجة بمذاق غني ومغذٍ",
+    price: 35,
+    image: "image00022.jpeg",
+    category: "salads"
   }
-] as const;
+];
