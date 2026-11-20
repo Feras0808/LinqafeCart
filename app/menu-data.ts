@@ -473,7 +473,7 @@ export const menuItems = [
     arName: "كيكة الجزر",
     description: "Moist carrot cake with walnuts and warm cinnamon",
     arDesc: "كيكة جزر طرية مع الجوز ولمسة دافئة من القرفة",
-    price: 16,
+    price: 33,
     image: "DSC00877.JPG",
     category: "desserts"
   },
@@ -718,7 +718,7 @@ export const menuItems = [
     arName: "سلطة العدس الأخضر",
     description: "Fresh green lentil salad with a wholesome, satisfying flavor",
     arDesc: "سلطة العدس الأخضر الطازجة بمذاق غني ومغذٍ",
-    price: 35,
+    price: 37,
     image: "image00022.jpeg",
     category: "salads"
   }
