@@ -437,15 +437,6 @@ export const menuItems = [
     image: "san-sebastian.webp",
     category: "desserts"
   },
-  {
-    name: "Pistachio Cheesecake",
-    arName: "تشيز كيك بالفستق",
-    description: "Creamy pistachio cheesecake with a delicate pistachio crunch",
-    arDesc: "تشيز كيك كريمي بنكهة الفستق الغنية مع لمسة مقرمشة من الفستق",
-    price: 28,
-    image: "pistachio-cheesecake.webp",
-    category: "desserts"
-  },
 
   // ==========================================
   // DESSERTS - CAKES
@@ -484,15 +475,6 @@ export const menuItems = [
     arDesc: "كيكة شوكولاتة فالرونا الفاخرة مع موس الفانيلا الغني والناعم",
     price: 25,
     image: "vanilla-mousse-chocolate-cake.webp",
-    category: "desserts"
-  },
-  {
-    name: "Mosaic Cake",
-    arName: "كيكة الموزاييك",
-    description: "Rich chocolate biscuit cake with crunchy nuts and a smooth chocolate coating",
-    arDesc: "كيكة بسكويت بالشوكولاتة الغنية مع المكسرات المقرمشة وطبقة شوكولاتة ناعمة",
-    price: 18,
-    image: "mosaic-cake.webp",
     category: "desserts"
   },
   {
@@ -600,28 +582,6 @@ export const menuItems = [
     arDesc: "حلوى شهية بنكهة القرفة العطرية الدافئة",
     price: 14,
     image: "DSC00905.JPG",
-    category: "desserts"
-  },
-
-  // ==========================================
-  // DESSERTS - TURKISH PASTRIES
-  // ==========================================
-  {
-    name: "Olive Acma",
-    arName: "آتشما بالزيتون",
-    description: "Soft Turkish pastry with olives and sesame",
-    arDesc: "معجنات تركية طرية بالزيتون والسمسم",
-    price: 15,
-    image: "olive-acma.webp",
-    category: "desserts"
-  },
-  {
-    name: "Simit",
-    arName: "سميت تركي",
-    description: "Golden Turkish sesame bread with a crisp finish",
-    arDesc: "خبز تركي تقليدي مغطى بالسمسم بقشرة ذهبية مقرمشة",
-    price: 16,
-    image: "simit.webp",
     category: "desserts"
   },
 
